@@ -85,11 +85,8 @@ void displayGameLost(void)
     clearScreenGLCD();
     displayLogo();
 
-    GLCD_SetForegroundColor(GLCD_COLOR_RED);
+    GLCD_SetForegroundColor(GLCD_COLOR_YELLOW);
     GLCD_DrawString(100, 100, "Perdu !!!");
-    GLCD_SetForegroundColor(GLCD_COLOR_WHITE);
-    sprintf(chaine, "Votre score : %d", score);
-    GLCD_DrawString(20, 140, chaine);
 
     while (!userButtonPressed()); /* Attente confirmation joueur */
 }
@@ -104,7 +101,7 @@ void displayGameWon(void)
 {
     displayLogo();
 
-    GLCD_SetForegroundColor(GLCD_COLOR_RED);
+    GLCD_SetForegroundColor(GLCD_COLOR_YELLOW);
     GLCD_DrawString(100, 100, "GAGNE !!!");
 
     while (!userButtonPressed()); /* Attente confirmation joueur */
@@ -128,7 +125,7 @@ void displayLogo(void)
     GLCD_DrawBitmap(190, 40, WIDTH_ENNEMI3,  HEIGHT_ENNEMI3,  (unsigned char *)bmpEnnemi3Green);*/
 	
 	
-		GLCD_DrawBitmap(100, 40, WIDTH_PACMAN, HEIGHT_PACMAN, (unsigned char *)bmpPacManClose);
+	  GLCD_DrawBitmap(100, 40, WIDTH_PACMAN, HEIGHT_PACMAN, (unsigned char *)bmpPacManClose);
 	  GLCD_DrawBitmap(130, 40, WIDTH_PACMAN, HEIGHT_PACMAN, (unsigned char *)bmpPacManOpenRight);
 	  GLCD_DrawBitmap(160, 40, WIDTH_PACMAN, HEIGHT_PACMAN, (unsigned char *)bmpPacManOpenUp);
 	  GLCD_DrawBitmap(190, 40, WIDTH_PACMAN, HEIGHT_PACMAN, (unsigned char *)bmpPacManOpenDown);

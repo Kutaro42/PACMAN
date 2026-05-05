@@ -37,9 +37,9 @@ extern const unsigned short bmpSpaceShip[HEIGHT_SPACE_SHIP * WIDTH_SPACE_SHIP * 
 #define WIDTH_ENNEMI 8
 
 
-#define HEIGHT_FOOD 4
+#define HEIGHT_FOOD 6
 
-#define WIDTH_FOOD 4*/
+#define WIDTH_FOOD 6
 extern const unsigned short bmpPacManClose[HEIGHT_PACMAN*WIDTH_PACMAN];
 extern const unsigned short bmpPacManOpenRight[HEIGHT_PACMAN*WIDTH_PACMAN];
 extern const unsigned short bmpPacManOpenLeft[HEIGHT_PACMAN*WIDTH_PACMAN];

@@ -21,32 +21,10 @@
 
 #include <stdio.h>  /* sprintf() */
 
-/* ---- Constantes de mise en page de la grille d'ennemis ---- */
-#define ENEMY_ROW1_Y       30   /**< Ordonnee Y de la 1re ligne d'ennemis. */
-#define ENEMY_ROW2_Y       80   /**< Ordonnee Y de la 2e  ligne d'ennemis. */
-#define ENEMY_ROW3_Y      130   /**< Ordonnee Y de la 3e  ligne d'ennemis. */
-#define ENEMY_COL_SPACING  30   /**< Espacement horizontal entre deux ennemis (pixels). */
-#define MAX_ENEMIES        30   /**< Nombre maximal d'ennemis simultanement a l'ecran. */
-#define BOSS_INITIAL_X      1   /**< Position X de depart du Boss. */
-#define BOSS_INITIAL_Y     30   /**< Position Y de depart du Boss. */
-#define BOSS_LIVES         20   /**< Nombre de vies du Boss. */
-/**
- * Position Y initiale du missile : juste au-dessus du vaisseau.
- * = GLCD_HEIGHT - HEIGHT_SPACE_SHIP - HEIGHT_ROCKET
- */
-#define ROCKET_START_Y    200
+
 
 /* ---- Variables statiques du module ---- */
-static int xSpaceShip;    /**< Position X courante du vaisseau (coin gauche). */
-static int rocketActive;  /**< 1 si un missile est en vol, 0 sinon.          */
-static int xRocket;       /**< Position X courante du missile.               */
-static int yRocket;       /**< Position Y courante du missile (diminue).     */
-
-/* ---- Variables globales (partagees avec d'autres modules via ExtGlobales.h) ---- */
-int nbEnnemis;            /**< Nombre total d'ennemis du niveau en cours.    */
-Ennemi ennemis[MAX_ENEMIES]; /**< Tableau des ennemis du niveau en cours.   */
-int nbDeadEnnemis;        /**< Nombre d'ennemis elimines dans le niveau.     */
-
+static int xSpaceShip;    /*< Position X courante du vaisseau (coin gauche). */
 /**
  * @brief Affiche le nom du niveau courant en haut a gauche de l'ecran.
  *
