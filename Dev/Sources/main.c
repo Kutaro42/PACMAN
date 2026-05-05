@@ -1,4 +1,4 @@
-﻿/**
+/**
  * @file    main.c
  * @author  IUT Informatique La Rochelle
  * @version v1.5

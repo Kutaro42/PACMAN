@@ -32,7 +32,7 @@ extern const unsigned short bmpSpaceShip[HEIGHT_SPACE_SHIP * WIDTH_SPACE_SHIP * 
 #define WIDTH_PACMAN 8
 
 
-/*#define HEIGHT_ENNEMI 8
+#define HEIGHT_ENNEMI 8
 
 #define WIDTH_ENNEMI 8
 
