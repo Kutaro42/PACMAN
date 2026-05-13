@@ -26,6 +26,7 @@
 typedef struct Ennemi Ennemi;
 struct Ennemi {
     int  direction; /**< Sens de déplacement horizontal : +1 → droite, -1 → gauche. */
+		bool inLive =0; //ennemi en vie ? faux par défaut.
     int  x;         /**< Position horizontale (pixels) du coin supérieur gauche.     */
     int  y;         /**< Position verticale   (pixels) du coin supérieur gauche.     */
     int  width;     /**< Largeur du sprite en pixels.                                */
