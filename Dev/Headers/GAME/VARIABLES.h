@@ -6,31 +6,38 @@
 
 //PLAYER BOARD POSITION
 
-const double itsPLAYER_x = 0;
-const double itsPLAYER_y =0;
+double itsPLAYER_x = 0;
+double itsPLAYER_y =0;
 
+//PLAYER SPEED
+
+const unsigned int PLAYER_SPEED = 10;//valuable operand
 
 //...
 
 //-------------------------ENEMY--------------------------
 
+//ENEMY SPEED
+const unsigned int PLAYER_SPEED = 10;//valuable operand
+
 //ENEMY_1 BOARD POSITION
 
-const double itsENEMY1_x = 0;
-const double itsENEMY1_y =0;
+double itsENEMY1_x = 0;
+double itsENEMY1_y =0;
+
 
 //...
 
 //ENEMY_2 BOARD POSITION
 
-const double itsENEMY2_x = 0;
-const double itsENEMY2_y =0;
+double itsENEMY2_x = 0;
+double itsENEMY2_y =0;
 
 //...
 
 //ENEMY_3 BOARD POSITION
 
-const double itsENEMY3_x = 0;
-const double itsENEMY3_y =0;
+double itsENEMY3_x = 0;
+double itsENEMY3_y =0;
 
 //...
