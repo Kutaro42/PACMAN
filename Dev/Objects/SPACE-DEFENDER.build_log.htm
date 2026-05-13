@@ -21,24 +21,71 @@ Target DLL:      UL2CM3.DLL V1.160.3.0
 Dialog DLL:      TARMSTM.DLL V1.66.0.0
  
 <h2>Project:</h2>
-C:\Users\lbouca01\Downloads\Puck Man\Puck man\mini-project-pacman\Dev\Puck man.uvprojx
-Project File Date:  05/05/2026
+M:\Systèmes Embarqués\mini-project-pacman\Dev\Puck man.uvprojx
+Project File Date:  05/13/2026
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 5 (build 528)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Puck man'
-compiling random.c...
-compiling GLCD_Fonts.c...
-compiling ImagesBMP.c...
-compiling main.c...
-compiling GPIO.c...
-compiling menu.c...
-compiling TIMERS.c...
 compiling game.c...
-linking...
-Program Size: Code=5890 RO-data=22002 RW-data=84 ZI-data=1988  
-FromELF: creating hex file...
-".\Objects\SPACE-DEFENDER.axf" - 0 Error(s), 0 Warning(s).
+Sources\GAME\game.c(85): error:  #20: identifier "rocketActive" is undefined
+      rocketActive = 0;
+Sources\GAME\game.c(87): error:  #20: identifier "nbDeadEnnemis" is undefined
+      nbDeadEnnemis = 0;
+Sources\GAME\game.c(92): error:  #20: identifier "nbEnnemis" is undefined
+          nbEnnemis = MAX_ENEMIES;
+Sources\GAME\game.c(92): error:  #20: identifier "MAX_ENEMIES" is undefined
+          nbEnnemis = MAX_ENEMIES;
+Sources\GAME\game.c(106): error:  #20: identifier "ennemis" is undefined
+              ennemis[i].direction = 1;    /* Depart vers la droite */
+Sources\GAME\game.c(110): error:  #20: identifier "ENEMY_COL_SPACING" is undefined
+              ennemis[i].x = (i % 10) * ENEMY_COL_SPACING + 1;
+Sources\GAME\game.c(113): error:  #20: identifier "ENEMY_ROW1_Y" is undefined
+              if      (i < 10) ennemis[i].y = ENEMY_ROW1_Y;
+Sources\GAME\game.c(114): error:  #20: identifier "ENEMY_ROW2_Y" is undefined
+              else if (i < 20) ennemis[i].y = ENEMY_ROW2_Y;
+Sources\GAME\game.c(115): error:  #20: identifier "ENEMY_ROW3_Y" is undefined
+              else             ennemis[i].y = ENEMY_ROW3_Y;
+Sources\GAME\game.c(158): error:  #20: identifier "nbEnnemis" is undefined
+          nbEnnemis = 1;
+Sources\GAME\game.c(166): error:  #20: identifier "ennemis" is undefined
+          ennemis[0].direction = 1;
+Sources\GAME\game.c(168): error:  #20: identifier "BOSS_INITIAL_X" is undefined
+          ennemis[0].x        = BOSS_INITIAL_X;
+Sources\GAME\game.c(169): error:  #20: identifier "BOSS_INITIAL_Y" is undefined
+          ennemis[0].y        = BOSS_INITIAL_Y;
+Sources\GAME\game.c(171): error:  #20: identifier "BOSS_LIVES" is undefined
+          ennemis[0].nbLives  = BOSS_LIVES;
+Sources\GAME\game.c(249): error:  #20: identifier "rocketActive" is undefined
+      if (rocketActive)
+Sources\GAME\game.c(252): error:  #20: identifier "xRocket" is undefined
+          clearZone(xRocket, yRocket + HEIGHT_ROCKET - 1, WIDTH_ROCKET, 1);
+Sources\GAME\game.c(252): error:  #20: identifier "yRocket" is undefined
+          clearZone(xRocket, yRocket + HEIGHT_ROCKET - 1, WIDTH_ROCKET, 1);
+Sources\GAME\game.c(279): error:  #20: identifier "rocketActive" is undefined
+      if (!rocketActive)  /* Un seul missile autorise a la fois */
+Sources\GAME\game.c(282): error:  #20: identifier "xRocket" is undefined
+          xRocket      = xSpaceShip + WIDTH_SPACE_SHIP / 2;
+Sources\GAME\game.c(283): error:  #20: identifier "yRocket" is undefined
+          yRocket      = ROCKET_START_Y;
+Sources\GAME\game.c(283): error:  #20: identifier "ROCKET_START_Y" is undefined
+          yRocket      = ROCKET_START_Y;
+Sources\GAME\game.c(308): error:  #20: identifier "nbEnnemis" is undefined
+      for (i = 0; i < nbEnnemis; i++)
+Sources\GAME\game.c(310): error:  #20: identifier "ennemis" is undefined
+          if (!ennemis[i].dead)
+Sources\GAME\game.c(336): error:  #20: identifier "rocketActive" is undefined
+              if (rocketActive
+Sources\GAME\game.c(337): error:  #20: identifier "xRocket" is undefined
+                  && xRocket >= ennemis[i].x - WIDTH_ROCKET / 2
+Sources\GAME\game.c(339): error:  #20: identifier "yRocket" is undefined
+                  && yRocket <= ennemis[i].y + ennemis[i].height
+Sources\GAME\game.c(359): error:  #20: identifier "nbDeadEnnemis" is undefined
+                      nbDeadEnnemis++;
+Sources\GAME\game.c(418): error:  #20: identifier "nbDeadEnnemis" is undefined
+              if (nbDeadEnnemis == nbEnnemis)
+Sources\GAME\game.c: 0 warnings, 28 errors
+".\Objects\SPACE-DEFENDER.axf" - 28 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -71,24 +118,25 @@ Package Vendor: Keil
       Source file:   Device\StdPeriph_Driver\src\stm32f10x_rcc.c
 
    * Component: Keil::Device:StdPeriph Drivers:GPIO:3.5.0
-      Include file:  Device\StdPeriph_Driver\inc\stm32f10x_gpio.h
       Source file:   Device\StdPeriph_Driver\src\stm32f10x_gpio.c
+      Include file:  Device\StdPeriph_Driver\inc\stm32f10x_gpio.h
 
    * Component: Keil::Device:StdPeriph Drivers:Framework:3.5.1
-      Source file:   Device\StdPeriph_Driver\src\misc.c
       Source file:   Device\StdPeriph_Driver\templates\stm32f10x_it.c
+      Source file:   Device\StdPeriph_Driver\src\misc.c
+      Source file:   Device\StdPeriph_Driver\templates\stm32f10x_conf.h
       Include file:  Device\StdPeriph_Driver\templates\stm32f10x_it.h
       Include file:  Device\StdPeriph_Driver\inc\misc.h
-      Source file:   Device\StdPeriph_Driver\templates\stm32f10x_conf.h
 
    * Component: Keil::Device:Startup:1.0.0
       Source file:   Device\Source\ARM\STM32F1xx_OPT.s
-      Source file:   Device\Source\system_stm32f10x.c
       Source file:   Device\Source\ARM\startup_stm32f10x_xl.s
+      Source file:   Device\Source\system_stm32f10x.c
       Include file:  RTE_Driver\Config\RTE_Device.h
 
    * Component: ARM::CMSIS:CORE:5.0.1
-Build Time Elapsed:  00:00:00
+Target not created.
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>

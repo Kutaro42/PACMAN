@@ -203,10 +203,10 @@ void stopLevel(void)
 }
 
 /**
- * @brief Met a jour la position du vaisseau selon l'etat du joystick.
+ * @brief Met a jour la position du Joueur selon l'etat du joystick.
  *
  * Appelee par l'ISR du Timer 1 (~3.6 ms).
- * - Joystick gauche : efface le pixel droit du vaisseau, decremente xSpaceShip.
+ * - Joystick gauche : efface le pixel droit du joueur, decremente xSpaceShip.
  * - Joystick droite : efface le pixel gauche du vaisseau, incremente xSpaceShip.
  * Le vaisseau s'arrete aux bords (x=0 et x=GLCD_SIZE_Y-WIDTH_SPACE_SHIP).
  */
@@ -238,33 +238,26 @@ void updateSpaceShip(void)
 }
 
 /**
- * @brief Fait monter le missile d'un pixel et efface sa trace.
+ * @brief Fait apparaitre la Pac gomme sur l'écran à une position (x,y) aléatoire.
  *
  * Appelee par l'ISR du Timer 2 (~1.8 ms).
- * Si le missile sort par le haut de l'ecran, il est desactive et
- * le HUD est redessine (le missile effacait le niveau et le score).
+ * 
+ * 
  */
-void updateRocket(void)
+void Spawn_Pac_Gum(void)
 {
-    if (rocketActive)
-    {
-        /* Effacer le pixel du bas du missile (trace precedente) */
-        clearZone(xRocket, yRocket + HEIGHT_ROCKET - 1, WIDTH_ROCKET, 1);
+   
+}
 
-        yRocket--;  /* Faire monter le missile */
+/**
+ * @brief Met fin au niveau en fonction de l'entitée qui touche la pac-gomme en premier
+ * 
+ * Si la pac gomme est touchée par une entité : est-ce le joueur ? si oui : fin de niveau, sinon vie-=1;
+ */
+bool Gum_touched(){
+	//code
+	
 
-        /* Redessiner le missile a sa nouvelle position */
-        GLCD_SetForegroundColor(GLCD_COLOR_RED);
-        GLCD_DrawBargraph(xRocket, yRocket, WIDTH_ROCKET, HEIGHT_ROCKET, 1024);
-
-        /* Desactiver le missile s'il sort par le haut de l'ecran */
-        if (yRocket + HEIGHT_ROCKET < 0)
-        {
-            rocketActive = 0;
-            displayLevelName();  /* Restaurer le HUD */
-            displayScore();
-        }
-    }
 }
 
 /**
@@ -303,120 +296,7 @@ void shoot(void)
  */
 void updateEnnemis(void)
 {
-    int i;
-
-    for (i = 0; i < nbEnnemis; i++)
-    {
-        if (!ennemis[i].dead)
-        {
-            /* 1. Bord atteint : descendre et inverser la direction */
-            if (ennemis[i].x <= 0 || ennemis[i].x >= GLCD_SIZE_Y - ennemis[i].width)
-            {
-                clearZone(ennemis[i].x, ennemis[i].y,
-                          ennemis[i].width, ennemis[i].height);
-                ennemis[i].direction *= -1;
-                ennemis[i].y += 20;
-            }
-            else if (ennemis[i].direction == 1)
-            {
-                /* 2a. Deplacement vers la droite : effacer le bord gauche */
-                clearZone(ennemis[i].x, ennemis[i].y, 1, ennemis[i].height);
-            }
-            else
-            {
-                /* 2b. Deplacement vers la gauche : effacer le bord droit */
-                clearZone(ennemis[i].x + ennemis[i].width - 1,
-                          ennemis[i].y, 1, ennemis[i].height);
-            }
-
-            /* 3. Deplacer l'ennemi d'un pixel */
-            ennemis[i].x += ennemis[i].direction;
-
-            /* 4. Detecter la collision missile / ennemi */
-            if (rocketActive
-                && xRocket >= ennemis[i].x - WIDTH_ROCKET / 2
-                && xRocket <= ennemis[i].x + ennemis[i].width + WIDTH_ROCKET / 2
-                && yRocket <= ennemis[i].y + ennemis[i].height
-                && yRocket >= ennemis[i].y)
-            {
-                ennemis[i].nbLives--;
-
-                /* Points bonus par touche sur le Boss (avant mort) */
-                if (ennemis[i].type == BOSS)
-                    score += 10;
-
-                if (ennemis[i].nbLives == 0)
-                {
-                    /* Ennemi elimine : attribution des points finals */
-                    ennemis[i].dead = 1;
-                    switch (ennemis[i].type)
-                    {
-                        case ENNEMI_1: score +=  5; break;
-                        case ENNEMI_2: score += 10; break;
-                        case ENNEMI_3: score += 20; break;
-                        case BOSS:     score += 50; break;
-                    }
-                    nbDeadEnnemis++;
-                }
-
-                displayScore();
-                rocketActive = 0;
-
-                /* Effacer le missile et l'ennemi de l'ecran */
-                clearZone(xRocket, yRocket, WIDTH_ROCKET, HEIGHT_ROCKET);
-                clearZone(ennemis[i].x, ennemis[i].y,
-                          ennemis[i].width, ennemis[i].height);
-            }
-            else
-            {
-                /* 5. Pas de collision : redessiner le sprite */
-                if (ennemis[i].type == ENNEMI_1)
-                {
-                    GLCD_DrawBitmap(ennemis[i].x, ennemis[i].y,
-                                    ennemis[i].width, ennemis[i].height,
-                                    (unsigned char *)bmpEnnemi1);
-                }
-                else if (ennemis[i].type == ENNEMI_2)
-                {
-                    if (ennemis[i].nbLives == 2)
-                        GLCD_DrawBitmap(ennemis[i].x, ennemis[i].y,
-                                        ennemis[i].width, ennemis[i].height,
-                                        (unsigned char *)bmpEnnemi2White);
-                    else if (ennemis[i].nbLives == 1)
-                        GLCD_DrawBitmap(ennemis[i].x, ennemis[i].y,
-                                        ennemis[i].width, ennemis[i].height,
-                                        (unsigned char *)bmpEnnemi2Red);
-                }
-                else if (ennemis[i].type == ENNEMI_3)
-                {
-                    if (ennemis[i].nbLives == 3)
-                        GLCD_DrawBitmap(ennemis[i].x, ennemis[i].y,
-                                        ennemis[i].width, ennemis[i].height,
-                                        (unsigned char *)bmpEnnemi3White);
-                    else if (ennemis[i].nbLives == 2)
-                        GLCD_DrawBitmap(ennemis[i].x, ennemis[i].y,
-                                        ennemis[i].width, ennemis[i].height,
-                                        (unsigned char *)bmpEnnemi3Green);
-                    else if (ennemis[i].nbLives == 1)
-                        GLCD_DrawBitmap(ennemis[i].x, ennemis[i].y,
-                                        ennemis[i].width, ennemis[i].height,
-                                        (unsigned char *)bmpEnnemi3Red);
-                }
-                else if (ennemis[i].type == BOSS)
-                {
-                    GLCD_DrawBitmap(ennemis[i].x, ennemis[i].y,
-                                    ennemis[i].width, ennemis[i].height,
-                                    (unsigned char *)bmpBoss);
-                }
-            }
-
-            /* 6. L'ennemi a atteint la zone du vaisseau → fin de partie */
-            if (ennemis[i].y + ennemis[i].height >= GLCD_HEIGHT - HEIGHT_SPACE_SHIP)
-                gameLost = 1;
-
-            /* 7. Tous les ennemis elimines → niveau passe */
-            if (nbDeadEnnemis == nbEnnemis)
-                levelPassed = 1;
+    
         }
     }
 }
