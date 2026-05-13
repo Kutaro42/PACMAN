@@ -1,4 +1,4 @@
-﻿/**
+/**
   ******************************************************************************************************************
   * @file    TIMERS.c 
   * @author  IUT Informatique La Rochelle
@@ -14,7 +14,7 @@
 #include "game.h"
 
 /**
- * @brief Initialise TIM1, TIM2 et TIM8.
+ * @brief Initialise TIM1 et TIM8.
  *
  * Appelle les fonctions de configuration individuelles dans l'ordre.
  * Les timers NE sont PAS demarres ici ; utiliser startTimerX() pour cela.
@@ -22,12 +22,11 @@
 void initTIMERS(void)
 {
     configTimer1();
-    configTimer2();
     configTimer8();
 }
 
 /* ========================================================================
- * Timer 1 : deplacement du vaisseau
+ * Timer 1 : deplacement de Pac Man
  * Horloge APB2 = 72 MHz  =>  T = (PSC+1)*(ARR+1)/72e6 = 4*64801/72e6 ~= 3.6 ms
  * ======================================================================== */
 
@@ -74,54 +73,6 @@ void TIM1_UP_TIM10_IRQHandler(void)
 }
 
 /* ========================================================================
- * Timer 2 : deplacement du missile
- * Horloge APB1 = 36 MHz  =>  T = (PSC+1)*(ARR+1)/36e6 = 4*32401/36e6 ~= 3.6 ms
- * Note : la periode effective mesuree est ~1.8 ms (commentaire original).
- * ======================================================================== */
-
-/**
- * @brief Configure TIM2 : PSC=3, ARR=32400, active l'IRQ Update.
- *
- * L'IRQ NVIC est le bit 28 de ISER0 (TIM2 = IRQ numero 28).
- * Note : SETENA0 = (1<<28) utilise une affectation, pas un OU logique.
- */
-void configTimer2(void)
-{
-    RCC->APB1ENR |= (1 << 0);  /* TIM2EN : activation de l'horloge TIM2    */
-    TIM2->PSC = 3;              /* Prescaler : divise par 4                  */
-    TIM2->ARR = 32400;          /* Periode                                   */
-    TIM2->DIER |= UIE;          /* Autorisation de l'interruption Update     */
-    stopTimer2();
-    SETENA0 = (1 << 28);        /* Active l'IRQ TIM2 dans le NVIC            */
-}
-
-/** @brief Demarre TIM2 (CEN=1). */
-void startTimer2(void)
-{
-    TIM2->CR1 |= CEN;
-}
-
-/** @brief Arrete TIM2 (CEN=0). */
-void stopTimer2(void)
-{
-    TIM2->CR1 &= ~CEN;
-}
-
-/**
- * @brief ISR TIM2 Update : met a jour la position du missile.
- *
- * Appelee a chaque periode de TIM2. On acquitte UIF apres traitement.
- */
-void TIM2_IRQHandler(void)
-{
-    if (TIM2->SR & UIF)
-    {
-        updateRocket();
-        TIM2->SR &= ~UIF;   /* Acquitter le drapeau Update */
-    }
-}
-
-/* ========================================================================
  * Timer 8 : deplacement des ennemis (vitesse variable)
  * Horloge APB2 = 72 MHz, ARR = 36000
  * Periode = (PSC+1) * 36001 / 72e6
@@ -155,7 +106,6 @@ void setSpeedTimer8(Speed speed)
     if      (speed == NORMAL)     TIM8->PSC = 31;  /* ~16 ms */
     else if (speed == SPEED)      TIM8->PSC = 25;  /* ~13 ms */
     else if (speed == HARDCORE)   TIM8->PSC = 19;  /* ~10 ms */
-    else if (speed == IMPOSSIBLE) TIM8->PSC = 13;  /* ~7 ms  */
 }
 
 /** @brief Demarre TIM8 (CEN=1). */

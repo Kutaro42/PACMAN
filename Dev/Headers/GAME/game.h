@@ -18,18 +18,6 @@
 #include "stdbool.h"
 
 /**
- * @brief Types d'ennemis disponibles dans le jeu.
- *
- * Chaque type possède un sprite, des dimensions et un nombre de vies distincts.
- */
-typedef enum {
-    ENNEMI_1,   /**< Basique  : 1 vie,  18×18 px, blanc.                         */
-    ENNEMI_2,   /**< Moyen    : 2 vies, 18×24 px, blanc → rouge.                 */
-    ENNEMI_3,   /**< Avancé   : 3 vies, 18×26 px, blanc → vert → rouge.          */
-    BOSS        /**< Boss     : 20 vies, 32×34 px, blanc avec yeux rouges.        */
-} Type;
-
-/**
  * @brief Structure décrivant un ennemi à l'écran.
  *
  * Contient toutes les informations nécessaires au déplacement, à l'affichage
@@ -38,13 +26,10 @@ typedef enum {
 typedef struct Ennemi Ennemi;
 struct Ennemi {
     int  direction; /**< Sens de déplacement horizontal : +1 → droite, -1 → gauche. */
-    bool dead;      /**< true si l'ennemi a été éliminé (ne sera plus mis à jour).   */
     int  x;         /**< Position horizontale (pixels) du coin supérieur gauche.     */
     int  y;         /**< Position verticale   (pixels) du coin supérieur gauche.     */
     int  width;     /**< Largeur du sprite en pixels.                                */
     int  height;    /**< Hauteur du sprite en pixels.                                */
-    Type type;      /**< Type de l'ennemi (détermine sprite et comportement).        */
-    int  nbLives;   /**< Nombre de vies restantes avant destruction complète.        */
 };
 
 /* ---- Fonctions d'affichage HUD ---- */
@@ -96,22 +81,6 @@ void stopLevel(void);
  * vers la gauche ou la droite et le redessine.
  */
 void updateSpaceShip(void);
-
-/**
- * @brief Fait monter le missile d'un pixel et efface sa trace.
- *
- * Appelée par l'ISR du Timer 2 (~1.8 ms). Désactive le missile si
- * il sort par le haut de l'écran.
- */
-void updateRocket(void);
-
-/**
- * @brief Déclenche un tir si aucun missile n'est déjà en vol.
- *
- * Appelée depuis l'ISR EXTI8 (bouton BP_USER). Positionne le missile
- * au centre du vaisseau.
- */
-void shoot(void);
 
 /**
  * @brief Met à jour tous les ennemis vivants : déplacement, collision, score.

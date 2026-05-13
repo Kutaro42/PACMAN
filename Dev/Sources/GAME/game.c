@@ -24,7 +24,7 @@
 
 
 /* ---- Variables statiques du module ---- */
-static int xSpaceShip;    /*< Position X courante du vaisseau (coin gauche). */
+static int xPacMan;    /*< Position X courante du Pac (coin gauche). */
 /**
  * @brief Affiche le nom du niveau courant en haut a gauche de l'ecran.
  *
@@ -39,18 +39,20 @@ void displayLevelName(void)
     GLCD_SetForegroundColor(GLCD_COLOR_YELLOW);
     GLCD_SetFont(&GLCD_Font_6x8);
 
-    if (level <= 6)
+    if (level == 1)
     {
         sprintf(chaine, "Niveau %d", level);
         GLCD_DrawString(0, 0, chaine);
     }
-    else if (level == 7)
+    else if (level == 2)
     {
-        GLCD_DrawString(0, 0, "Boss");
+        sprintf(chaine, "Niveau %d", level);
+        GLCD_DrawString(0, 0, chaine);
     }
-    else if (level == 8)
+    else if (level == 3)
     {
-        GLCD_DrawString(0, 0, "Boss - Le retour..");
+        sprintf(chaine, "Niveau %d", level);
+        GLCD_DrawString(0, 0, chaine);
     }
 }
 
@@ -63,7 +65,7 @@ void displayScore(void)
 {
     char chaine[5];
     GLCD_SetBackgroundColor(GLCD_COLOR_BLACK);
-    GLCD_SetForegroundColor(GLCD_COLOR_BLUE);
+    GLCD_SetForegroundColor(GLCD_COLOR_YELLOW);
     GLCD_SetFont(&GLCD_Font_16x24);
     sprintf(chaine, "%d", score);
     GLCD_DrawString((GLCD_WIDTH / 2) - 30, 0, chaine);
@@ -78,106 +80,81 @@ void displayScore(void)
  */
 void setupLevel(void)
 {
-    int i;
 
     /* Position X aleatoire du vaisseau au debut du niveau */
-    xSpaceShip   = getRandom(0, GLCD_WIDTH - WIDTH_SPACE_SHIP);
-    rocketActive = 0;
+    xPacMan   = getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
     levelPassed  = 0;
-    nbDeadEnnemis = 0;
 
-    if (level <= 6)
+    if (level == 1)
     {
-        /* --- Niveaux classiques : 30 ennemis en grille 10x3 --- */
-        nbEnnemis = MAX_ENEMIES;
+				Ennemi ennemis1;
+        /* Vitesse de l'ennemi selon le niveau */
+        setSpeedTimer8(NORMAL);
 
-        /* Vitesse des ennemis selon le niveau */
-        switch (level)
-        {
-            case 1: case 2: case 3: setSpeedTimer8(NORMAL);     break;
-            case 4:                 setSpeedTimer8(SPEED);      break;
-            case 5:                 setSpeedTimer8(HARDCORE);   break;
-            case 6:                 setSpeedTimer8(IMPOSSIBLE); break;
-        }
 
-        /* Initialisation de chaque ennemi */
-        for (i = 0; i < nbEnnemis; i++)
-        {
-            ennemis[i].direction = 1;    /* Depart vers la droite */
-            ennemis[i].dead      = 0;
+        /* Initialisation de l'ennemi */
+        ennemis1.direction = 1;    /* Depart vers la droite */
 
-            /* Position X : 10 colonnes, espacement ENEMY_COL_SPACING pixels */
-            ennemis[i].x = (i % 10) * ENEMY_COL_SPACING + 1;
+        /* Position X */
+        ennemis1.x = 1;
 
-            /* Position Y : 3 rangees distinctes */
-            if      (i < 10) ennemis[i].y = ENEMY_ROW1_Y;
-            else if (i < 20) ennemis[i].y = ENEMY_ROW2_Y;
-            else             ennemis[i].y = ENEMY_ROW3_Y;
-
-            /* Type d'ennemi selon le niveau :
-             *  Niveaux 1/2/3 : un seul type  (ennemis homogenes)
-             *  Niveaux 4/5/6 : mix des 3 types */
-            switch (level)
-            {
-                case 1: ennemis[i].type = ENNEMI_1; break;
-                case 2: ennemis[i].type = ENNEMI_2; break;
-                case 3: ennemis[i].type = ENNEMI_3; break;
-                default:
-                    if      (i < 10) ennemis[i].type = ENNEMI_1;
-                    else if (i < 20) ennemis[i].type = ENNEMI_2;
-                    else             ennemis[i].type = ENNEMI_3;
-                    break;
-            }
+        /* Position Y */
+        ennemis1.y = 1 ;
 
             /* Dimensions et vies selon le type */
-            switch (ennemis[i].type)
-            {
-                case ENNEMI_1:
-                    ennemis[i].width   = WIDTH_ENNEMI1;
-                    ennemis[i].height  = HEIGHT_ENNEMI1;
-                    ennemis[i].nbLives = 1;
-                    break;
-                case ENNEMI_2:
-                    ennemis[i].width   = WIDTH_ENNEMI2;
-                    ennemis[i].height  = HEIGHT_ENNEMI2;
-                    ennemis[i].nbLives = 2;
-                    break;
-                case ENNEMI_3:
-                    ennemis[i].width   = WIDTH_ENNEMI3;
-                    ennemis[i].height  = HEIGHT_ENNEMI3;
-                    ennemis[i].nbLives = 3;
-                    break;
-                default:
-                    break;
-            }
-        }
+        ennemis1.width   = WIDTH_ENNEMI;
+        ennemis1.height  = HEIGHT_ENNEMI1;
     }
+
+    else if (level == 2)
+    {
+				Ennemi ennemis2;
+        /* Vitesse de l'ennemi selon le niveau */
+        setSpeedTimer8(SPEED);
+
+
+        /* Initialisation de l'ennemi */
+        ennemis2.direction = 1;    /* Depart vers la droite */
+
+        /* Position X */
+        ennemis2.x = 1;
+
+        /* Position Y */
+        ennemis2.y = 1 ;
+
+            /* Dimensions et vies selon le type */
+        ennemis2.width   = WIDTH_ENNEMI;
+        ennemis2.height  = HEIGHT_ENNEMI1;
+    }
+
     else
     {
-        /* --- Niveaux Boss : un seul ennemi avec beaucoup de vies --- */
-        nbEnnemis = 1;
+				Ennemi ennemis3;
+        /* Vitesse de l'ennemi selon le niveau */
+        setSpeedTimer8(HARDCORE);
 
-        switch (level)
-        {
-            case 7: setSpeedTimer8(NORMAL);     break;
-            case 8: setSpeedTimer8(IMPOSSIBLE); break;
-        }
 
-        ennemis[0].direction = 1;
-        ennemis[0].dead      = 0;
-        ennemis[0].x        = BOSS_INITIAL_X;
-        ennemis[0].y        = BOSS_INITIAL_Y;
-        ennemis[0].type     = BOSS;
-        ennemis[0].nbLives  = BOSS_LIVES;
-        ennemis[0].height   = HEIGHT_BOSS;
-        ennemis[0].width    = WIDTH_BOSS;
+        /* Initialisation de l'ennemi */
+        ennemis3.direction = 1;    /* Depart vers la droite */
+
+        /* Position X */
+        ennemis3.x = 1;
+
+        /* Position Y */
+        ennemis3.y = 1 ;
+
+            /* Dimensions et vies selon le type */
+        ennemis3.width   = WIDTH_ENNEMI;
+        ennemis3.height  = HEIGHT_ENNEMI1;
     }
+
+
 }
 
 /**
  * @brief Lance le niveau : efface l'ecran, affiche HUD et deMarre les timers.
  *
- * Active Timer 1 (vaisseau), Timer 2 (missile), Timer 8 (ennemis)
+ * Active Timer 1 (vaisseau), Timer 8 (ennemis)
  * et l'interruption EXTI8 (bouton de tir).
  */
 void startLevel(void)
@@ -186,9 +163,7 @@ void startLevel(void)
     displayLevelName();
     displayScore();
     startTimer1();            /* Debut du deplacement du vaisseau        */
-    startTimer2();            /* Debut du suivi du missile               */
     startTimer8();            /* Debut du deplacement des ennemis        */
-    startInterruptBP_USER();  /* Activation du tir via le bouton USER    */
 }
 
 /**
@@ -197,85 +172,54 @@ void startLevel(void)
 void stopLevel(void)
 {
     stopTimer1();
-    stopTimer2();
     stopTimer8();
-    stopInterruptBP_USER();
 }
 
 /**
- * @brief Met a jour la position du Joueur selon l'etat du joystick.
+ * @brief Met a jour la position du vaisseau selon l'etat du joystick.
  *
  * Appelee par l'ISR du Timer 1 (~3.6 ms).
- * - Joystick gauche : efface le pixel droit du joueur, decremente xSpaceShip.
+ * - Joystick gauche : efface le pixel droit du vaisseau, decremente xSpaceShip.
  * - Joystick droite : efface le pixel gauche du vaisseau, incremente xSpaceShip.
  * Le vaisseau s'arrete aux bords (x=0 et x=GLCD_SIZE_Y-WIDTH_SPACE_SHIP).
  */
 void updateSpaceShip(void)
 {
-    if (joystickLeftPressed() && xSpaceShip > 0)
+    if (joystickLeftPressed() && xPacMan > 0)
     {
         /* Effacer la colonne droite avant de deplacer vers la gauche */
-        clearZone(xSpaceShip + WIDTH_SPACE_SHIP - 1,
-                  GLCD_HEIGHT - HEIGHT_SPACE_SHIP, 1, HEIGHT_SPACE_SHIP);
-        xSpaceShip--;
+        clearZone(xPacMan + WIDTH_PACMAN - 1,
+                  GLCD_HEIGHT - HEIGHT_PACMAN, 1, HEIGHT_PACMAN);
+        xPacMan--;
     }
-    else if (joystickRightPressed() && xSpaceShip + WIDTH_SPACE_SHIP < GLCD_SIZE_Y)
+    else if (joystickRightPressed() && xPacMan + WIDTH_PACMAN < GLCD_SIZE_Y)
     {
         /* Effacer la colonne gauche avant de deplacer vers la droite */
-        clearZone(xSpaceShip,
-                  GLCD_HEIGHT - HEIGHT_SPACE_SHIP, 1, HEIGHT_SPACE_SHIP);
-        xSpaceShip++;
+        clearZone(xPacMan,
+                  GLCD_HEIGHT - HEIGHT_PACMAN, 1, HEIGHT_PACMAN);
+        xPacMan++;
     }
+    else if (joystickUpPressed() && xPacMan + HEIGHT_PACMAN < GLCD_SIZE_X);
+    {
+        /* Effacer la colonne gauche avant de deplacer vers la droite */
+        clearZone(xPacMan,
+                  GLCD_HEIGHT - HEIGHT_SPACE_SHIP, 1, HEIGHT_SPACE_SHIP);
+        xPacMan++;
+    }
+
+
+
     /* Redessiner le vaisseau a la nouvelle position */
    /* GLCD_DrawBitmap(xSpaceShip, GLCD_HEIGHT - HEIGHT_SPACE_SHIP,
                     WIDTH_SPACE_SHIP, HEIGHT_SPACE_SHIP,
                     (unsigned char *)bmpSpaceShip);*/
 		
 		    /* Redessiner le vaisseau a la nouvelle position */
-    GLCD_DrawBitmap(xSpaceShip, GLCD_HEIGHT - HEIGHT_PACMAN,
+    GLCD_DrawBitmap(xPacMan, GLCD_HEIGHT - HEIGHT_PACMAN,
                     WIDTH_PACMAN, HEIGHT_PACMAN,
                     (unsigned char *)bmpPacManClose);
 }
 
-/**
- * @brief Fait apparaitre la Pac gomme sur l'écran à une position (x,y) aléatoire.
- *
- * Appelee par l'ISR du Timer 2 (~1.8 ms).
- * 
- * 
- */
-void Spawn_Pac_Gum(void)
-{
-   
-}
-
-/**
- * @brief Met fin au niveau en fonction de l'entitée qui touche la pac-gomme en premier
- * 
- * Si la pac gomme est touchée par une entité : est-ce le joueur ? si oui : fin de niveau, sinon vie-=1;
- */
-bool Gum_touched(){
-	//code
-	
-
-}
-
-/**
- * @brief Declenche un tir si aucun missile n'est deja en vol.
- *
- * Appelee depuis l'ISR EXTI9_5 (bouton BP_USER).
- * Le missile part du centre haut du vaisseau, a la position Y definie
- * par ROCKET_START_Y (= GLCD_HEIGHT - HEIGHT_SPACE_SHIP - HEIGHT_ROCKET).
- */
-void shoot(void)
-{
-    if (!rocketActive)  /* Un seul missile autorise a la fois */
-    {
-        rocketActive = 1;
-        xRocket      = xSpaceShip + WIDTH_SPACE_SHIP / 2;
-        yRocket      = ROCKET_START_Y;
-    }
-}
 
 /**
  * @brief Met a jour la position de tous les ennemis et detecte les collisions.
@@ -283,20 +227,9 @@ void shoot(void)
  * Appelee par l'ISR du Timer 8 (vitesse variable selon le niveau).
  *
  * Algorithme pour chaque ennemi vivant :
- *  1. Si l'ennemi atteint un bord horizontal → descend de 20 px et inverse sa direction.
- *  2. Sinon efface uniquement le pixel de trace dans l'ancienne direction.
- *  3. Deplace d'un pixel dans la direction courante.
- *  4. Teste la collision avec le missile :
- *     - Decremente les vies de l'ennemi.
- *     - Si vies = 0 → ennemi marque comme dead, attribution de points, compteur incremente.
- *     - Met a jour le score, supprime le missile.
- *  5. Si pas de collision → redessine le sprite (couleur = etat de vies pour ENNEMI_2/3).
- *  6. Si l'ennemi atteint la hauteur du vaisseau → gameLost = true.
- *  7. Si tous les ennemis sont morts → levelPassed = true.
+
  */
 void updateEnnemis(void)
 {
-    
-        }
-    }
+
 }

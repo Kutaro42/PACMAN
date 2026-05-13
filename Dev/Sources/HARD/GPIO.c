@@ -1,4 +1,4 @@
-﻿/**
+/**
   ******************************************************************************************************************
   * @file    GPIO.c 
   * @author  IUT Informatique La Rochelle
@@ -123,20 +123,4 @@ void startInterruptBP_USER(void)
 void stopInterruptBP_USER(void)
 {
     EXTI->IMR &= ~(1 << 8);  /* Masque EXTI8 : plus d'interruption de tir */
-}
-
-/**
- * @brief ISR partagee pour les lignes EXTI 5 a 9.
- *
- * On identifie EXTI8 via le bit 8 du registre Pending (EXTI->PR).
- * Apres avoir appele shoot(), le drapeau est acquitte en ecrivant
- * 1 sur ce bit (ecrire 1 = remise a 0, comportement specifique STM32).
- */
-void EXTI9_5_IRQHandler(void)
-{
-    if (EXTI->PR & (1 << 8))   /* Interruption provient-elle d'EXTI8 ? */
-    {
-        shoot();               /* Tenter de tirer un missile            */
-        EXTI->PR |= (1 << 8);  /* Acquitter le drapeau                  */
-    }
 }

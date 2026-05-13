@@ -1,4 +1,4 @@
-﻿/**
+/**
   ******************************************************************************************************************
   * @file    ExtGlobales.h
   * @author  IUT Informatique La Rochelle
@@ -24,7 +24,7 @@ extern volatile int gameWon;      /**< 1 si tous les niveaux ont ete completes. 
 extern volatile int levelPassed;  /**< 1 lorsque tous les ennemis du niveau sont elimines.  */
 
 /* ---- Progression ---- */
-extern int          level;        /**< Niveau actuel (1-6 : ennemis normaux ; 7-8 : Boss).  */
+extern int          level;        /**< Niveau actuel (1-3) */
 extern volatile int score;        /**< Score courant (mis a jour depuis les ISR).           */
 
 /* ---- Polices d'affichage (définies dans le pilote GLCD) ---- */
