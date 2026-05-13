@@ -41,3 +41,11 @@ double itsENEMY3_x = 0;
 double itsENEMY3_y =0;
 
 //...
+
+//-------------------------PAC_GUM-------------------------
+
+//GUM POSITION
+
+double itsGUM_x = 0;
+double itsGUM_y = 0;
+
