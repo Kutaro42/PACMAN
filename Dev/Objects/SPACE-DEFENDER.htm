@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\SPACE-DEFENDER.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\SPACE-DEFENDER.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Wed May 13 09:09:13 2026
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Wed May 13 09:57:21 2026
 <BR><P>
 <H3>Maximum Stack Usage =        104 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -668,7 +668,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[7c]"></a>joystickDownPressed</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, gpio.o(i.joystickDownPressed))
-<BR><BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refreshMenu
+<BR><BR>[Called By]<UL><LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateSpaceShip
+<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refreshMenu
 </UL>
 
 <P><STRONG><a name="[82]"></a>joystickLeftPressed</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, gpio.o(i.joystickLeftPressed))
@@ -731,7 +732,7 @@ Global Symbols
 <LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setupLevel
 </UL>
 
-<P><STRONG><a name="[78]"></a>setupLevel</STRONG> (Thumb, 98 bytes, Stack size 40 bytes, game.o(i.setupLevel))
+<P><STRONG><a name="[78]"></a>setupLevel</STRONG> (Thumb, 108 bytes, Stack size 40 bytes, game.o(i.setupLevel))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = setupLevel &rArr; getRandom
 </UL>
 <BR>[Calls]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setSpeedTimer8
@@ -783,13 +784,14 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM8_UP_TIM13_IRQHandler
 </UL>
 
-<P><STRONG><a name="[58]"></a>updateSpaceShip</STRONG> (Thumb, 110 bytes, Stack size 16 bytes, game.o(i.updateSpaceShip))
+<P><STRONG><a name="[58]"></a>updateSpaceShip</STRONG> (Thumb, 142 bytes, Stack size 16 bytes, game.o(i.updateSpaceShip))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = updateSpaceShip &rArr; clearZone &rArr; GLCD_DrawBargraph &rArr; GLCD_SetWindow
 </UL>
 <BR>[Calls]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;joystickRightPressed
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;joystickLeftPressed
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clearZone
 <LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;joystickUpPressed
+<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;joystickDownPressed
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GLCD_DrawBitmap
 </UL>
 <BR>[Called By]<UL><LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_UP_TIM10_IRQHandler

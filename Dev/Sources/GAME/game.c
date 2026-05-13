@@ -25,6 +25,7 @@
 
 /* ---- Variables statiques du module ---- */
 static int xPacMan;    /*< Position X courante du Pac (coin gauche). */
+static int yPacMan;
 /**
  * @brief Affiche le nom du niveau courant en haut a gauche de l'ecran.
  *
@@ -81,8 +82,9 @@ void displayScore(void)
 void setupLevel(void)
 {
 
-    /* Position X aleatoire du vaisseau au debut du niveau */
+    /* Position XY aleatoire du vaisseau au debut du niveau */
     xPacMan   = getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
+		yPacMan 	= getRandom(GLCD_HEIGHT - HEIGHT_PACMAN, 0);
     levelPassed  = 0;
 
     if (level == 1)
@@ -189,23 +191,31 @@ void updateSpaceShip(void)
     {
         /* Effacer la colonne droite avant de deplacer vers la gauche */
         clearZone(xPacMan + WIDTH_PACMAN - 1,
-                  GLCD_HEIGHT - HEIGHT_PACMAN, 1, HEIGHT_PACMAN);
+                  yPacMan, 1, HEIGHT_PACMAN);
         xPacMan--;
     }
     else if (joystickRightPressed() && xPacMan + WIDTH_PACMAN < GLCD_SIZE_Y)
     {
         /* Effacer la colonne gauche avant de deplacer vers la droite */
         clearZone(xPacMan,
-                  GLCD_HEIGHT - HEIGHT_PACMAN, 1, HEIGHT_PACMAN);
+                  yPacMan, 1, HEIGHT_PACMAN);
         xPacMan++;
     }
-    else if (joystickUpPressed() && xPacMan + HEIGHT_PACMAN < GLCD_SIZE_X);
+    else if (joystickUpPressed() /*&& yPacMan + HEIGHT_PACMAN < GLCD_SIZE_X*/)
     {
         /* Effacer la colonne gauche avant de deplacer vers la droite */
         clearZone(xPacMan,
-                  GLCD_HEIGHT - HEIGHT_SPACE_SHIP, 1, HEIGHT_SPACE_SHIP);
-        xPacMan++;
+                  yPacMan - HEIGHT_PACMAN-1, WIDTH_PACMAN, 1);
+        yPacMan--;
     }
+		else if (joystickDownPressed() /*&& yPacMan + HEIGHT_PACMAN < GLCD_SIZE_X*/)
+    {
+        /* Effacer la colonne gauche avant de deplacer vers la droite */
+        clearZone(xPacMan,
+                  yPacMan + HEIGHT_PACMAN, WIDTH_PACMAN, 1);
+        yPacMan++;
+    }
+		
 
 
 
@@ -215,7 +225,7 @@ void updateSpaceShip(void)
                     (unsigned char *)bmpSpaceShip);*/
 		
 		    /* Redessiner le vaisseau a la nouvelle position */
-    GLCD_DrawBitmap(xPacMan, GLCD_HEIGHT - HEIGHT_PACMAN,
+    GLCD_DrawBitmap(xPacMan, yPacMan,
                     WIDTH_PACMAN, HEIGHT_PACMAN,
                     (unsigned char *)bmpPacManClose);
 }
