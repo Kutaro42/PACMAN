@@ -128,7 +128,7 @@ void setupLevel(void)
         /* Position Y aleatoire*/
         ennemis2.itsPosition.y = getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
 
-            /* Dimensions et vies selon le type */
+            /* Dimensions */
         ennemis2.width   = WIDTH_ENNEMI;
         ennemis2.height  = HEIGHT_ENNEMI1;
     }
