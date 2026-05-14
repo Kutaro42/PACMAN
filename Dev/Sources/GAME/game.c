@@ -33,7 +33,7 @@ static int yPacMan;
  * 
  * 
  */
-void displayScores(int enemiScore)
+void displayScores(int score, int enemiScore)
 {
     char chaine[20];
     GLCD_SetBackgroundColor(GLCD_COLOR_BLACK);
@@ -108,7 +108,7 @@ Gum * newGum(void)
  * et charge les ennemis et leur directions en mémoire selon le score du joueur.
  * Configure aussi la vitesse du Timer 8 selon le niveau.
  */
-void setupLevel()//Gum * itsGum
+void setupLevel(Ennemi * ennemi1, Ennemi * ennemi2, Ennemi * ennemi3, Gum * itsGum)//
 {
 	
 
@@ -117,11 +117,11 @@ void setupLevel()//Gum * itsGum
 	//yPacMan 	= getRandom(GLCD_HEIGHT - HEIGHT_PACMAN, 0);
 
 	/* Position XY aleatoire de la pac gomme*/
-	//itsGum->itsPosition.x=getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
-	//itsGum->itsPosition.y=getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
+	itsGum->itsPosition.x=getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
+	itsGum->itsPosition.y=getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
 
 	//on initialise le premier ennemi par défaut
-	Ennemi ennemi1;
+	//Ennemi ennemi1;
 			
 	/* Vitesse de l'ennemi par défaut */
 	setSpeedTimer8(NORMAL);
@@ -131,51 +131,51 @@ void setupLevel()//Gum * itsGum
 	//Position * direction =trackGum(ennemi1.itsPosition,itsGum.itsPosition);
 
 	/* Position X aleatoire*/
-	ennemi1.itsPosition.x = getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
+	ennemi1->itsPosition.x = getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
 
 	/* Position Y aleatoire*/
-	ennemi1.itsPosition.y = getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
+	ennemi1->itsPosition.y = getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
 
 			/* Dimensions et vies*/
-	ennemi1.width   = WIDTH_ENNEMI;
-	ennemi1.height  = HEIGHT_ENNEMI1;
+	ennemi1->width   = WIDTH_ENNEMI;
+	ennemi1->height  = HEIGHT_ENNEMI1;
  
 			
 	if (score >= 1)//si le joueur récupère la première pac gomme, ajouter l'ennemi 2
 	{
-			Ennemi ennemi2;//on initialise un second ennemi
-			ennemi2.inLive=true;
+			//Ennemi ennemi2;//on initialise un second ennemi
+			ennemi2->inLive=true;
 
 			/* Position X aleatoire*/
-			ennemi2.itsPosition.x = getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
+			ennemi2->itsPosition.x = getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
 
 			/* Position Y aleatoire*/
-			ennemi2.itsPosition.y = getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
+			ennemi2->itsPosition.y = getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
 		
 			/* Initialisation de la direction de l'ennemi */
 			//Position * direction =trackGum(ennemi2.itsPosition,itsGum.itsPosition);
 
 					/* Dimensions */
-			ennemi2.width   = WIDTH_ENNEMI;
-			ennemi2.height  = HEIGHT_ENNEMI1;
+			ennemi2->width   = WIDTH_ENNEMI;
+			ennemi2->height  = HEIGHT_ENNEMI1;
 	}
 
 	if (score == 2) // Si le joueur récupère la seconde pac gomme, initialiser l'ennemi 3
 	{
-			Ennemi ennemi3;
-			ennemi3.inLive=true;
+			//Ennemi ennemi3;
+			ennemi3->inLive=true;
 
 			/* Initialisation de la direction de l'ennemi */
 			//Position * direction =trackGum(ennemi3.itsPosition,itsGum.itsPosition);
 			/* Position X aleatoire*/
-			ennemi3.itsPosition.x = getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
+			ennemi3->itsPosition.x = getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
 
 			/* Position Y aleatoire*/
-			ennemi3.itsPosition.y = getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
+			ennemi3->itsPosition.y = getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
 
 					/* Dimensions et vies selon le type */
-			ennemi3.width   = WIDTH_ENNEMI;
-			ennemi3.height  = HEIGHT_ENNEMI1;
+			ennemi3->width   = WIDTH_ENNEMI;
+			ennemi3->height  = HEIGHT_ENNEMI1;
 	}
 }
 
@@ -190,7 +190,7 @@ void startLevel(void)
 {
     clearScreenGLCD();
     displayEndGame();
-    displayScores(0);
+    displayScores(10,440);
     startTimer1();            /* Debut du deplacement du vaisseau        */
     startTimer8();            /* Debut du deplacement des ennemis        */
 }
@@ -275,7 +275,7 @@ Position * trackGum(Position begin, Position end){
 	//code :
 	//on initialise les variables d'usage :
 	//int positionalVector[2] = {0,0};
-	Position * positionalVector;
+	Position * positionalVector=NULL;
 	//Pos_X
 	
 	//dans un premier temps, on calcule le vecteur directeur d'origine (x;y) et d'extremitée (Gum.x;Gum.y) :

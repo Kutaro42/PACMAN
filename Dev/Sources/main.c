@@ -75,11 +75,15 @@ int main(void)
 						//conditions de défaites :
 						if ((enemiScore>=3))	gameLost = 1;
 						
+						/* --- Ecran de resultat --- */
+						if (gameLost) {displayGameLost();}
+						else if (gameWon) {displayGameWon();}
+						
         }
 
-        /* --- Ecran de resultat --- */
-        if (gameLost) {displayGameLost();}
-        else if (gameWon) {displayGameWon();}
+        
+					
+				return 0;
     
 }
 

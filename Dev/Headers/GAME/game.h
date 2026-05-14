@@ -69,7 +69,7 @@ void displayEndGame(void);
  *
  * Police 16×24 pixels, couleur bleue.
  */
-void displayScores(int enemiScore);
+void displayScores(int score, int enemiScore);
 
 /* ---- Cycle de vie d'un niveau ---- */
 
@@ -79,7 +79,7 @@ void displayScores(int enemiScore);
  * Positionne aléatoirement le vaisseau, réinitialise le missile,
  * place les ennemis en formation et règle la vitesse du Timer 8.
  */
-void setupLevel();//Gum * itsGum
+void setupLevel(Ennemi * ennemi1, Ennemi * ennemi2, Ennemi * ennemi3, Gum * itsGum);//Gum * itsGum
 
 /**
  * @brief Lance le niveau : efface l'écran, affiche le HUD et démarre les timers.
