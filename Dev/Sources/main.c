@@ -23,12 +23,10 @@
 /* Les variables modifiees depuis des ISR (Timer 8, Timer 2, Timer 1) doivent    */
 /* etre volatile pour empecher le compilateur de les cacher en registre et de    */
 /* rater les mises a jour effectuees hors du flot d'execution principal.        */
-volatile int gameLost;     /**< 1 si le vaisseau a touche un bord bas ou un ennemi.  */
-volatile int gameWon;      /**< 1 si les 8 niveaux ont ete passes avec succes.       */
-volatile int levelPassed;  /**< 1 si tous les ennemis du niveau courant sont morts.  */
-int          level;        /**< Numero du niveau en cours (1 a 8).                   */
-volatile int score;        /**< Score total du joueur (incremente a chaque kill).    */
-
+volatile int gameLost;     /**< 1 si le joueur a touché un bord bas ou un ennemi.  */
+volatile int gameWon;      /**< 1 si les 8 niveaux ont été passés avec succès.       */
+volatile int score;        /**< Score total du joueur (incrémente à chaque collisions avec la pac-gomme).    */
+volatile int enemiScore;	/**< Score total de l'ennemi */
 /**
  * @brief Point d'entree : initialise le materiel puis lance la boucle de jeu.
  *
@@ -57,8 +55,7 @@ int main(void)
         /* --- Initialisation de la partie --- */
         setRandom();
         gameLost = gameWon = 0;
-        level = 1;
-        score = 0;
+        score = enemiScore = 0;
 
         /* --- Boucle de partie : enchainement des niveaux --- */
         while (!gameLost && !gameWon)
@@ -68,10 +65,10 @@ int main(void)
 
             while (!gameLost && !levelPassed); /* Attente fin de niveau (ISR)       */
 
-            stopLevel();            /* Arrete les timers et l'interruption de tir   */
+            stopLevel();            /* Arrete les timers   */
 
-            if (levelPassed) level++;    /* Passer au niveau suivant                */
-            if (level > 8)   gameWon = 1; /* Les 8 niveaux passes → victoire        */
+						}/* Passer au niveau suivant                */
+            if (score >= 3)   gameWon = 1; /* Les 3 Gommes obtenues → victoire        */
         }
 
         /* --- Ecran de resultat --- */

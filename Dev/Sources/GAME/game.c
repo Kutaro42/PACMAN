@@ -82,12 +82,16 @@ void displayScore(void)
 void setupLevel(void)
 {
 
-    /* Position XY aleatoire du vaisseau au debut du niveau */
+    /* Position XY aleatoire du joueur au debut du niveau */
     xPacMan   = getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
 		yPacMan 	= getRandom(GLCD_HEIGHT - HEIGHT_PACMAN, 0);
-    levelPassed  = 0;
 
-    if (level == 1)
+		/* Position XY aleatoire de la pac gomme*/
+		Gum itsGum;
+		itsGum.itsPosition.x=getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
+	  itsGum.itsPosition.y=getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
+	
+    if (score == 1)
     {
 				Ennemi ennemis1;
         /* Vitesse de l'ennemi selon le niveau */
@@ -97,11 +101,11 @@ void setupLevel(void)
         /* Initialisation de l'ennemi */
         ennemis1.direction = 1;    /* Depart vers la droite */
 
-        /* Position X */
-        ennemis1.x = 1;
+        /* Position X aleatoire*/
+        ennemis1.itsPosition.x = getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
 
-        /* Position Y */
-        ennemis1.y = 1 ;
+        /* Position Y aleatoire*/
+        ennemis1.itsPosition.y = getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
 
             /* Dimensions et vies selon le type */
         ennemis1.width   = WIDTH_ENNEMI;
@@ -118,11 +122,11 @@ void setupLevel(void)
         /* Initialisation de l'ennemi */
         ennemis2.direction = 1;    /* Depart vers la droite */
 
-        /* Position X */
-        ennemis2.x = 1;
+        /* Position X aleatoire*/
+        ennemis2.itsPosition.x = getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
 
-        /* Position Y */
-        ennemis2.y = 1 ;
+        /* Position Y aleatoire*/
+        ennemis2.itsPosition.y = getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
 
             /* Dimensions et vies selon le type */
         ennemis2.width   = WIDTH_ENNEMI;
@@ -205,14 +209,14 @@ void updateSpaceShip(void)
     {
         /* Effacer la colonne gauche avant de deplacer vers la droite */
         clearZone(xPacMan,
-                  yPacMan - HEIGHT_PACMAN-1, WIDTH_PACMAN, 1);
+                  yPacMan + HEIGHT_PACMAN-1, WIDTH_PACMAN, 1);
         yPacMan--;
     }
 		else if (joystickDownPressed() /*&& yPacMan + HEIGHT_PACMAN < GLCD_SIZE_X*/)
     {
         /* Effacer la colonne gauche avant de deplacer vers la droite */
         clearZone(xPacMan,
-                  yPacMan + HEIGHT_PACMAN, WIDTH_PACMAN, 1);
+                  yPacMan, WIDTH_PACMAN, 1);
         yPacMan++;
     }
 		

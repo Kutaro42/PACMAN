@@ -81,7 +81,7 @@ int refreshMenu(void)
  */
 void displayGameLost(void)
 {
-    char chaine[20];
+    //char chaine[20];
     clearScreenGLCD();
     displayLogo();
 
