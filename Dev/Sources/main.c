@@ -63,7 +63,7 @@ int main(void)
             setupLevel();           /* Prepare les donnees du niveau                */
             startLevel();           /* Lance les timers, affiche le terrain         */
 
-            while (!gameLost && !levelPassed); /* Attente fin de niveau (ISR)       */
+            while (!gameLost); /* Attente fin de niveau (ISR)       */
 
             stopLevel();            /* Arrete les timers   */
 
@@ -74,5 +74,6 @@ int main(void)
         /* --- Ecran de resultat --- */
         if (gameLost)       displayGameLost();
         else if (gameWon)   displayGameWon();
-    }
+    
 }
+

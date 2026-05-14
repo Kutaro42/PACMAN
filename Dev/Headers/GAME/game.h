@@ -117,7 +117,7 @@ void updateEnnemis(void);
 
 void spawnGum(){
 	//code :
-	Gum itsGum;
+//	Gum itsGum;
 	//itsGum.itsPosition.x=getRandom(5, 100);
 	//itsGum.itsPosition.y=getRandom(5, 100);
 }
@@ -127,17 +127,18 @@ void spawnGum(){
  * Appellée dans la boucle logique des ennemis
  * Gère : direction de déplacement des ennemis pour traquer la pac Gomme 
  * et mettre en difficulté le joueur.
+ * "Ici on utilise des pointeurs pour économiser quelques ressources (passage par réference moins coûteux que passage par copie)
 */
-Position trackGum(Position begin, Position end){
+Position * trackGum(Position begin, Position end){
 	//code :
 	//on initialise les variables d'usage :
 	//int positionalVector[2] = {0,0};
-	Position positionalVector;
+	Position * positionalVector;
 	//Pos_X
 	
 	//dans un premier temps, on calcule le vecteur directeur d'origine (x;y) et d'extremitée (Gum.x;Gum.y) :
-	positionalVector.x=end.x - begin.x;//on calcule pour la coordonée x
-	positionalVector.y=end.y - begin.y;//on calcule pour la coordonée y
+	positionalVector->x=end.x - begin.x;//on calcule pour la coordonée x
+	positionalVector->y=end.y - begin.y;//on calcule pour la coordonée y
 	
 	//Puis on retourne les valeur sous forme de vectorPosition :
 	return positionalVector;

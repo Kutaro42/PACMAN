@@ -74,9 +74,9 @@ void displayScore(void)
 /**
  * @brief Initialise les donnees du niveau avant son demarrage.
  *
- * Positionne le vaisseau aleatoirement dans la zone de jeu, remet a zero
- * les compteurs de missile et d'ennemis, place 30 ennemis en 3 rangees
- * (niveaux 1 a 6) ou cree le boss unique (niveaux 7 et 8).
+ * Positionne le joueur aleatoirement dans la zone de jeu, remet a zero
+ * les compteurs de scores (joueur et ennemis), place aléatoirement la pac gomme
+ * et charge les ennemis et leur directions en mémoire selon le score du joueur.
  * Configure aussi la vitesse du Timer 8 selon le niveau.
  */
 void setupLevel(void)
@@ -91,67 +91,62 @@ void setupLevel(void)
 		itsGum.itsPosition.x=getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
 	  itsGum.itsPosition.y=getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
 	
-    if (score == 1)
-    {
-				Ennemi ennemis1;
-        /* Vitesse de l'ennemi selon le niveau */
+		//on initialise le premier ennemi par défaut
+				Ennemi ennemi1;
+				
+        /* Vitesse de l'ennemi par défaut */
         setSpeedTimer8(NORMAL);
 
 
-        /* Initialisation de l'ennemi */
-        ennemis1.direction = 1;    /* Depart vers la droite */
+        /* Initialisation de la direction de l'ennemi */
+				Position * direction =trackGum(ennemi1.itsPosition,itsGum.itsPosition);
 
         /* Position X aleatoire*/
-        ennemis1.itsPosition.x = getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
+        ennemi1.itsPosition.x = getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
 
         /* Position Y aleatoire*/
-        ennemis1.itsPosition.y = getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
+        ennemi1.itsPosition.y = getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
 
-            /* Dimensions et vies selon le type */
-        ennemis1.width   = WIDTH_ENNEMI;
-        ennemis1.height  = HEIGHT_ENNEMI1;
-    }
-
-    else if (level == 2)
+            /* Dimensions et vies*/
+        ennemi1.width   = WIDTH_ENNEMI;
+        ennemi1.height  = HEIGHT_ENNEMI1;
+   
+			
+    if (score >= 1)//si le joueur récupère la première pac gomme, ajouter l'ennemi 2
     {
-				Ennemi ennemis2;
-        /* Vitesse de l'ennemi selon le niveau */
-        setSpeedTimer8(SPEED);
-
-
-        /* Initialisation de l'ennemi */
-        ennemis2.direction = 1;    /* Depart vers la droite */
+				Ennemi ennemi2;//on initialise un second ennemi
+				ennemi2.inLive=true;
 
         /* Position X aleatoire*/
-        ennemis2.itsPosition.x = getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
+        ennemi2.itsPosition.x = getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
 
         /* Position Y aleatoire*/
-        ennemis2.itsPosition.y = getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
+        ennemi2.itsPosition.y = getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
+			
+				/* Initialisation de la direction de l'ennemi */
+				Position * direction =trackGum(ennemi2.itsPosition,itsGum.itsPosition);
 
             /* Dimensions */
-        ennemis2.width   = WIDTH_ENNEMI;
-        ennemis2.height  = HEIGHT_ENNEMI1;
+        ennemi2.width   = WIDTH_ENNEMI;
+        ennemi2.height  = HEIGHT_ENNEMI1;
     }
 
-    else
+    if (score == 2) // Si le joueur récupère la seconde pac gomme, initialiser l'ennemi 3
     {
-				Ennemi ennemis3;
-        /* Vitesse de l'ennemi selon le niveau */
-        setSpeedTimer8(HARDCORE);
+				Ennemi ennemi3;
+				ennemi3.inLive=true;
 
-
-        /* Initialisation de l'ennemi */
-        ennemis3.direction = 1;    /* Depart vers la droite */
-
+        /* Initialisation de la direction de l'ennemi */
+				Position * direction =trackGum(ennemi3.itsPosition,itsGum.itsPosition);
         /* Position X aleatoire*/
-        ennemis3.itsPosition.x = getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
+        ennemi3.itsPosition.x = getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
 
         /* Position Y aleatoire*/
-        ennemis3.itsPosition.y = getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
+        ennemi3.itsPosition.y = getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
 
             /* Dimensions et vies selon le type */
-        ennemis3.width   = WIDTH_ENNEMI;
-        ennemis3.height  = HEIGHT_ENNEMI1;
+        ennemi3.width   = WIDTH_ENNEMI;
+        ennemi3.height  = HEIGHT_ENNEMI1;
     }
 
 
@@ -182,7 +177,7 @@ void stopLevel(void)
 }
 
 /**
- * @brief Met a jour la position du vaisseau selon l'etat du joystick.
+ * @brief Met a jour la position du joueur selon l'etat du joystick.
  *
  * Appelee par l'ISR du Timer 1 (~3.6 ms).
  * - Joystick gauche : efface le pixel droit du vaisseau, decremente xSpaceShip.
@@ -247,3 +242,4 @@ void updateEnnemis(void)
 {
 
 }
+
