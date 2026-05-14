@@ -33,26 +33,26 @@ static int yPacMan;
  * Niveau 7       : "Boss".
  * Niveau 8       : "Boss - Le retour..".
  */
-void displayLevelName(void)
+void displayScores(void)
 {
     char chaine[20];
     GLCD_SetBackgroundColor(GLCD_COLOR_BLACK);
     GLCD_SetForegroundColor(GLCD_COLOR_YELLOW);
     GLCD_SetFont(&GLCD_Font_6x8);
 
-    if (level == 1)
+    if (score == 1)
     {
-        sprintf(chaine, "Niveau %d", level);
+        sprintf(chaine, "score %d", score);
         GLCD_DrawString(0, 0, chaine);
     }
     else if (level == 2)
     {
-        sprintf(chaine, "Niveau %d", level);
+        sprintf(chaine, "score %d", score);
         GLCD_DrawString(0, 0, chaine);
     }
     else if (level == 3)
     {
-        sprintf(chaine, "Niveau %d", level);
+        sprintf(chaine, "score %d", score);
         GLCD_DrawString(0, 0, chaine);
     }
 }
@@ -62,7 +62,7 @@ void displayLevelName(void)
  *
  * Police 16x24, couleur bleue sur fond noir.
  */
-void displayScore(void)
+void displayEndGame(void)
 {
     char chaine[5];
     GLCD_SetBackgroundColor(GLCD_COLOR_BLACK);
