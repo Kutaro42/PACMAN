@@ -143,11 +143,11 @@ void setupLevel(void)
         /* Initialisation de l'ennemi */
         ennemis3.direction = 1;    /* Depart vers la droite */
 
-        /* Position X */
-        ennemis3.x = 1;
+        /* Position X aleatoire*/
+        ennemis3.itsPosition.x = getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
 
-        /* Position Y */
-        ennemis3.y = 1 ;
+        /* Position Y aleatoire*/
+        ennemis3.itsPosition.y = getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
 
             /* Dimensions et vies selon le type */
         ennemis3.width   = WIDTH_ENNEMI;
