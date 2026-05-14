@@ -20,20 +20,20 @@
 #include "random.h"
 
 #include <stdio.h>  /* sprintf() */
-
+#include <stdlib.h> /*malloc() and free()*/
 
 
 /* ---- Variables statiques du module ---- */
 static int xPacMan;    /*< Position X courante du Pac (coin gauche). */
 static int yPacMan;
 /**
- * @brief Affiche le nom du niveau courant en haut a gauche de l'ecran.
+ * @brief Affiche le nom du score courant en haut a gauche de l'ecran.
  *
- * Niveaux 1 a 6 : "Niveau N" en jaune/6x8.
- * Niveau 7       : "Boss".
- * Niveau 8       : "Boss - Le retour..".
+ * Niveaux 1 a 3 : "Score N" en jaune/6x8.
+ * 
+ * 
  */
-void displayScores(void)
+void displayScores(int enemiScore)
 {
     char chaine[20];
     GLCD_SetBackgroundColor(GLCD_COLOR_BLACK);
@@ -45,16 +45,33 @@ void displayScores(void)
         sprintf(chaine, "score %d", score);
         GLCD_DrawString(0, 0, chaine);
     }
-    else if (level == 2)
+    else if (score == 2)
     {
         sprintf(chaine, "score %d", score);
         GLCD_DrawString(0, 0, chaine);
     }
-    else if (level == 3)
+    else if (score == 3)
     {
         sprintf(chaine, "score %d", score);
         GLCD_DrawString(0, 0, chaine);
     }
+		//Bloc du score ennemi (à implémenter plus tard)
+		/*
+		if (enemiScore == 1)
+    {
+        sprintf(chaine, "score %d", score);
+        GLCD_DrawString(0, 0, chaine);
+    }
+    else if (enemiScore == 2)
+    {
+        sprintf(chaine, "score %d", score);
+        GLCD_DrawString(0, 0, chaine);
+    }
+    else if (enemiScore == 3)
+    {
+        sprintf(chaine, "score %d", score);
+        GLCD_DrawString(0, 0, chaine);
+    }*/
 }
 
 /**
@@ -71,6 +88,18 @@ void displayEndGame(void)
     sprintf(chaine, "%d", score);
     GLCD_DrawString((GLCD_WIDTH / 2) - 30, 0, chaine);
 }
+
+Gum * newGum(void)
+{
+	//code d'allocation :
+	Gum *p = malloc(sizeof(Gum));
+	p->itsPosition.x=0;
+	p->itsPosition.y=0;
+	return p;
+	
+}
+
+
 /**
  * @brief Initialise les donnees du niveau avant son demarrage.
  *
@@ -79,78 +108,77 @@ void displayEndGame(void)
  * et charge les ennemis et leur directions en mémoire selon le score du joueur.
  * Configure aussi la vitesse du Timer 8 selon le niveau.
  */
-void setupLevel(void)
+void setupLevel()//Gum * itsGum
 {
-
-    /* Position XY aleatoire du joueur au debut du niveau */
-    xPacMan   = getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
-		yPacMan 	= getRandom(GLCD_HEIGHT - HEIGHT_PACMAN, 0);
-
-		/* Position XY aleatoire de la pac gomme*/
-		Gum itsGum;
-		itsGum.itsPosition.x=getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
-	  itsGum.itsPosition.y=getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
 	
-		//on initialise le premier ennemi par défaut
-				Ennemi ennemi1;
-				
-        /* Vitesse de l'ennemi par défaut */
-        setSpeedTimer8(NORMAL);
 
+	/* Position XY aleatoire du joueur au debut du niveau */
+	//xPacMan   = getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
+	//yPacMan 	= getRandom(GLCD_HEIGHT - HEIGHT_PACMAN, 0);
 
-        /* Initialisation de la direction de l'ennemi */
-				Position * direction =trackGum(ennemi1.itsPosition,itsGum.itsPosition);
+	/* Position XY aleatoire de la pac gomme*/
+	//itsGum->itsPosition.x=getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
+	//itsGum->itsPosition.y=getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
 
-        /* Position X aleatoire*/
-        ennemi1.itsPosition.x = getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
-
-        /* Position Y aleatoire*/
-        ennemi1.itsPosition.y = getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
-
-            /* Dimensions et vies*/
-        ennemi1.width   = WIDTH_ENNEMI;
-        ennemi1.height  = HEIGHT_ENNEMI1;
-   
+	//on initialise le premier ennemi par défaut
+	Ennemi ennemi1;
 			
-    if (score >= 1)//si le joueur récupère la première pac gomme, ajouter l'ennemi 2
-    {
-				Ennemi ennemi2;//on initialise un second ennemi
-				ennemi2.inLive=true;
+	/* Vitesse de l'ennemi par défaut */
+	setSpeedTimer8(NORMAL);
 
-        /* Position X aleatoire*/
-        ennemi2.itsPosition.x = getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
 
-        /* Position Y aleatoire*/
-        ennemi2.itsPosition.y = getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
+	/* Initialisation de la direction de l'ennemi */
+	//Position * direction =trackGum(ennemi1.itsPosition,itsGum.itsPosition);
+
+	/* Position X aleatoire*/
+	ennemi1.itsPosition.x = getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
+
+	/* Position Y aleatoire*/
+	ennemi1.itsPosition.y = getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
+
+			/* Dimensions et vies*/
+	ennemi1.width   = WIDTH_ENNEMI;
+	ennemi1.height  = HEIGHT_ENNEMI1;
+ 
 			
-				/* Initialisation de la direction de l'ennemi */
-				Position * direction =trackGum(ennemi2.itsPosition,itsGum.itsPosition);
+	if (score >= 1)//si le joueur récupère la première pac gomme, ajouter l'ennemi 2
+	{
+			Ennemi ennemi2;//on initialise un second ennemi
+			ennemi2.inLive=true;
 
-            /* Dimensions */
-        ennemi2.width   = WIDTH_ENNEMI;
-        ennemi2.height  = HEIGHT_ENNEMI1;
-    }
+			/* Position X aleatoire*/
+			ennemi2.itsPosition.x = getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
 
-    if (score == 2) // Si le joueur récupère la seconde pac gomme, initialiser l'ennemi 3
-    {
-				Ennemi ennemi3;
-				ennemi3.inLive=true;
+			/* Position Y aleatoire*/
+			ennemi2.itsPosition.y = getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
+		
+			/* Initialisation de la direction de l'ennemi */
+			//Position * direction =trackGum(ennemi2.itsPosition,itsGum.itsPosition);
 
-        /* Initialisation de la direction de l'ennemi */
-				Position * direction =trackGum(ennemi3.itsPosition,itsGum.itsPosition);
-        /* Position X aleatoire*/
-        ennemi3.itsPosition.x = getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
+					/* Dimensions */
+			ennemi2.width   = WIDTH_ENNEMI;
+			ennemi2.height  = HEIGHT_ENNEMI1;
+	}
 
-        /* Position Y aleatoire*/
-        ennemi3.itsPosition.y = getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
+	if (score == 2) // Si le joueur récupère la seconde pac gomme, initialiser l'ennemi 3
+	{
+			Ennemi ennemi3;
+			ennemi3.inLive=true;
 
-            /* Dimensions et vies selon le type */
-        ennemi3.width   = WIDTH_ENNEMI;
-        ennemi3.height  = HEIGHT_ENNEMI1;
-    }
+			/* Initialisation de la direction de l'ennemi */
+			//Position * direction =trackGum(ennemi3.itsPosition,itsGum.itsPosition);
+			/* Position X aleatoire*/
+			ennemi3.itsPosition.x = getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
 
+			/* Position Y aleatoire*/
+			ennemi3.itsPosition.y = getRandom(0, GLCD_WIDTH - WIDTH_PACMAN);
 
+					/* Dimensions et vies selon le type */
+			ennemi3.width   = WIDTH_ENNEMI;
+			ennemi3.height  = HEIGHT_ENNEMI1;
+	}
 }
+
 
 /**
  * @brief Lance le niveau : efface l'ecran, affiche HUD et deMarre les timers.
@@ -161,8 +189,8 @@ void setupLevel(void)
 void startLevel(void)
 {
     clearScreenGLCD();
-    displayLevelName();
-    displayScore();
+    displayEndGame();
+    displayScores(0);
     startTimer1();            /* Debut du deplacement du vaisseau        */
     startTimer8();            /* Debut du deplacement des ennemis        */
 }
@@ -242,4 +270,21 @@ void updateEnnemis(void)
 {
 
 }
+
+Position * trackGum(Position begin, Position end){
+	//code :
+	//on initialise les variables d'usage :
+	//int positionalVector[2] = {0,0};
+	Position * positionalVector;
+	//Pos_X
+	
+	//dans un premier temps, on calcule le vecteur directeur d'origine (x;y) et d'extremitée (Gum.x;Gum.y) :
+	positionalVector->x=end.x - begin.x;//on calcule pour la coordonée x
+	positionalVector->y=end.y - begin.y;//on calcule pour la coordonée y
+	
+	//Puis on retourne les valeur sous forme de vectorPosition :
+	return positionalVector;
+	
+}
+
 

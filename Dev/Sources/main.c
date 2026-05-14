@@ -19,6 +19,7 @@
 #include "menu.h"
 #include "game.h"
 
+
 /* ---- Variables globales partagees entre les modules ---- */
 /* Les variables modifiees depuis des ISR (Timer 8, Timer 2, Timer 1) doivent    */
 /* etre volatile pour empecher le compilateur de les cacher en registre et de    */
@@ -56,11 +57,12 @@ int main(void)
         setRandom();
         gameLost = gameWon = 0;
         score = enemiScore = 0;
+				//Gum * itsGum = newGum();//création de la gomme
 
         /* --- Boucle de partie : enchainement des niveaux --- */
         while (!gameLost && !gameWon)
         {
-            setupLevel();           /* Prepare les donnees du niveau                */
+            setupLevel();           /* Prepare les donnees du niveau    itsGum            */
             startLevel();           /* Lance les timers, affiche le terrain         */
 
             while (!gameLost); /* Attente fin de niveau (ISR)       */
@@ -68,12 +70,16 @@ int main(void)
             stopLevel();            /* Arrete les timers   */
 
 						}/* Passer au niveau suivant                */
-            if (score >= 3)   gameWon = 1; /* Les 3 Gommes obtenues → victoire        */
+            if (score >= 3)   gameWon = 1; /* Les 3 Gommes obtenues → victoire  */
+						
+						//conditions de défaites :
+						if ((enemiScore>=3))	gameLost = 1;
+						
         }
 
         /* --- Ecran de resultat --- */
-        if (gameLost)       displayGameLost();
-        else if (gameWon)   displayGameWon();
+        if (gameLost) {displayGameLost();}
+        else if (gameWon) {displayGameWon();}
     
 }
 

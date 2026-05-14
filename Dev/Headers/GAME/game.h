@@ -62,14 +62,14 @@ struct Gum {
  * Police 6×8 pixels, couleur jaune. Niveaux 1–6 : "Niveau N" ;
  * niveau 7 : "Boss" ; niveau 8 : "Boss - Le retour..".
  */
-void displayLevelName(void);
+void displayEndGame(void);
 
 /**
  * @brief Affiche le score courant au centre du bord supérieur de l'écran.
  *
  * Police 16×24 pixels, couleur bleue.
  */
-void displayScore(void);
+void displayScores(int enemiScore);
 
 /* ---- Cycle de vie d'un niveau ---- */
 
@@ -79,7 +79,7 @@ void displayScore(void);
  * Positionne aléatoirement le vaisseau, réinitialise le missile,
  * place les ennemis en formation et règle la vitesse du Timer 8.
  */
-void setupLevel(void);
+void setupLevel();//Gum * itsGum
 
 /**
  * @brief Lance le niveau : efface l'écran, affiche le HUD et démarre les timers.
@@ -115,12 +115,12 @@ void updateEnnemis(void);
 
 //pac gomme :
 
-void spawnGum(){
+void spawnGum(void);
 	//code :
-//	Gum itsGum;
+	//Gum itsGum;
 	//itsGum.itsPosition.x=getRandom(5, 100);
 	//itsGum.itsPosition.y=getRandom(5, 100);
-}
+
 
 /**
  * @brief Calcul les vecteurs trajectoire d'une position a à une position b
@@ -129,21 +129,7 @@ void spawnGum(){
  * et mettre en difficulté le joueur.
  * "Ici on utilise des pointeurs pour économiser quelques ressources (passage par réference moins coûteux que passage par copie)
 */
-Position * trackGum(Position begin, Position end){
-	//code :
-	//on initialise les variables d'usage :
-	//int positionalVector[2] = {0,0};
-	Position * positionalVector;
-	//Pos_X
-	
-	//dans un premier temps, on calcule le vecteur directeur d'origine (x;y) et d'extremitée (Gum.x;Gum.y) :
-	positionalVector->x=end.x - begin.x;//on calcule pour la coordonée x
-	positionalVector->y=end.y - begin.y;//on calcule pour la coordonée y
-	
-	//Puis on retourne les valeur sous forme de vectorPosition :
-	return positionalVector;
-	
-}
+Position * trackGum(Position begin, Position end);
 
 #endif /* __GAME_H */
 

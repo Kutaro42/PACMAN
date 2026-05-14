@@ -24,3 +24,4 @@
 .\objects\game.o: .\Headers\GAME\ExtGlobales.h
 .\objects\game.o: .\Headers\GAME\random.h
 .\objects\game.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\game.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
