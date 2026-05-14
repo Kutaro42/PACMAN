@@ -128,7 +128,7 @@ void spawnGum(){
  * Gère : direction de déplacement des ennemis pour traquer la pac Gomme 
  * et mettre en difficulté le joueur.
 */
-Position trackGum(int begin_x, int begin_y, int end_x, int end_y){
+Position trackGum(Position begin, Position end){
 	//code :
 	//on initialise les variables d'usage :
 	//int positionalVector[2] = {0,0};
@@ -136,8 +136,8 @@ Position trackGum(int begin_x, int begin_y, int end_x, int end_y){
 	//Pos_X
 	
 	//dans un premier temps, on calcule le vecteur directeur d'origine (x;y) et d'extremitée (Gum.x;Gum.y) :
-	positionalVector.x=end_x - begin_x;//on calcule pour la coordonée x
-	positionalVector.y=end_y - begin_y;//on calcule pour la coordonée y
+	positionalVector.x=end.x - begin.x;//on calcule pour la coordonée x
+	positionalVector.y=end.y - begin.y;//on calcule pour la coordonée y
 	
 	//Puis on retourne les valeur sous forme de vectorPosition :
 	return positionalVector;
