@@ -57,7 +57,7 @@ int main(void)
         setRandom();
         gameLost = gameWon = 0;
         score = enemiScore = 0;
-				//Gum * itsGum = newGum();//création de la gomme
+				Gum * itsGum = malloc(size_of(Gum));//création de la gomme
 
         /* --- Boucle de partie : enchainement des niveaux --- */
         while (!gameLost && !gameWon)

@@ -1,0 +1,1212 @@
+Component: ARM Compiler 5.06 update 6 (build 750) Tool: armlink [4d35ed]
+
+==============================================================================
+
+Section Cross References
+
+    main.o(i.main) refers to glcd.o(i.initGLCD) for initGLCD
+    main.o(i.main) refers to gpio.o(i.initGPIO) for initGPIO
+    main.o(i.main) refers to timers.o(i.initTIMERS) for initTIMERS
+    main.o(i.main) refers to random.o(i.initRandom) for initRandom
+    main.o(i.main) refers to menu.o(i.displayMenu) for displayMenu
+    main.o(i.main) refers to menu.o(i.refreshMenu) for refreshMenu
+    main.o(i.main) refers to random.o(i.setRandom) for setRandom
+    main.o(i.main) refers to game.o(i.setupLevel) for setupLevel
+    main.o(i.main) refers to game.o(i.startLevel) for startLevel
+    main.o(i.main) refers to game.o(i.stopLevel) for stopLevel
+    main.o(i.main) refers to menu.o(i.displayGameLost) for displayGameLost
+    main.o(i.main) refers to menu.o(i.displayGameWon) for displayGameWon
+    main.o(i.main) refers to main.o(.data) for .data
+    menu.o(i.displayGameLost) refers to glcd.o(i.clearScreenGLCD) for clearScreenGLCD
+    menu.o(i.displayGameLost) refers to menu.o(i.displayLogo) for displayLogo
+    menu.o(i.displayGameLost) refers to glcd_mcbstm32e.o(i.GLCD_SetForegroundColor) for GLCD_SetForegroundColor
+    menu.o(i.displayGameLost) refers to glcd_mcbstm32e.o(i.GLCD_DrawString) for GLCD_DrawString
+    menu.o(i.displayGameLost) refers to gpio.o(i.userButtonPressed) for userButtonPressed
+    menu.o(i.displayGameWon) refers to menu.o(i.displayLogo) for displayLogo
+    menu.o(i.displayGameWon) refers to glcd_mcbstm32e.o(i.GLCD_SetForegroundColor) for GLCD_SetForegroundColor
+    menu.o(i.displayGameWon) refers to glcd_mcbstm32e.o(i.GLCD_DrawString) for GLCD_DrawString
+    menu.o(i.displayGameWon) refers to gpio.o(i.userButtonPressed) for userButtonPressed
+    menu.o(i.displayLogo) refers to glcd_mcbstm32e.o(i.GLCD_SetBackgroundColor) for GLCD_SetBackgroundColor
+    menu.o(i.displayLogo) refers to glcd_mcbstm32e.o(i.GLCD_SetForegroundColor) for GLCD_SetForegroundColor
+    menu.o(i.displayLogo) refers to glcd_mcbstm32e.o(i.GLCD_SetFont) for GLCD_SetFont
+    menu.o(i.displayLogo) refers to glcd_mcbstm32e.o(i.GLCD_DrawString) for GLCD_DrawString
+    menu.o(i.displayLogo) refers to glcd_mcbstm32e.o(i.GLCD_DrawBitmap) for GLCD_DrawBitmap
+    menu.o(i.displayLogo) refers to glcd_fonts.o(.constdata) for GLCD_Font_16x24
+    menu.o(i.displayLogo) refers to imagesbmp.o(.constdata) for bmpPacManClose
+    menu.o(i.displayLogo) refers to imagesbmp.o(.constdata) for bmpPacManOpenRight
+    menu.o(i.displayLogo) refers to imagesbmp.o(.constdata) for bmpPacManOpenUp
+    menu.o(i.displayLogo) refers to imagesbmp.o(.constdata) for bmpPacManOpenDown
+    menu.o(i.displayLogo) refers to imagesbmp.o(.constdata) for bmpPacManOpenLeft
+    menu.o(i.displayMenu) refers to glcd.o(i.clearScreenGLCD) for clearScreenGLCD
+    menu.o(i.displayMenu) refers to menu.o(i.displayLogo) for displayLogo
+    menu.o(i.displayMenu) refers to glcd_mcbstm32e.o(i.GLCD_SetForegroundColor) for GLCD_SetForegroundColor
+    menu.o(i.displayMenu) refers to glcd_mcbstm32e.o(i.GLCD_DrawString) for GLCD_DrawString
+    menu.o(i.refreshMenu) refers to gpio.o(i.joystickUpPressed) for joystickUpPressed
+    menu.o(i.refreshMenu) refers to menu.o(i.displayMenu) for displayMenu
+    menu.o(i.refreshMenu) refers to gpio.o(i.joystickDownPressed) for joystickDownPressed
+    menu.o(i.refreshMenu) refers to gpio.o(i.joystickSelectPressed) for joystickSelectPressed
+    menu.o(i.refreshMenu) refers to menu.o(.data) for .data
+    game.o(i.displayEndGame) refers to game.o(i.displayScores) for displayScores
+    game.o(i.displayEndGame) refers to main.o(.data) for enemiScore
+    game.o(i.displayScores) refers to glcd_mcbstm32e.o(i.GLCD_SetBackgroundColor) for GLCD_SetBackgroundColor
+    game.o(i.displayScores) refers to glcd_mcbstm32e.o(i.GLCD_SetForegroundColor) for GLCD_SetForegroundColor
+    game.o(i.displayScores) refers to glcd_mcbstm32e.o(i.GLCD_SetFont) for GLCD_SetFont
+    game.o(i.displayScores) refers to printf1.o(i.__0sprintf$1) for __2sprintf
+    game.o(i.displayScores) refers to glcd_mcbstm32e.o(i.GLCD_DrawString) for GLCD_DrawString
+    game.o(i.displayScores) refers to glcd_fonts.o(.constdata) for GLCD_Font_6x8
+    game.o(i.drawEnnemi) refers to glcd_mcbstm32e.o(i.GLCD_DrawBitmap) for GLCD_DrawBitmap
+    game.o(i.drawEnnemi) refers to game.o(.bss) for .bss
+    game.o(i.drawEnnemi) refers to game.o(.data) for .data
+    game.o(i.drawEnnemi) refers to imagesbmp.o(.constdata) for bmpEnnemiOpenDown
+    game.o(i.drawEnnemi) refers to imagesbmp.o(.constdata) for bmpEnnemiClose
+    game.o(i.drawEnnemi) refers to imagesbmp.o(.constdata) for bmpEnnemiOpenRight
+    game.o(i.drawEnnemi) refers to imagesbmp.o(.constdata) for bmpEnnemiOpenLeft
+    game.o(i.drawEnnemi) refers to imagesbmp.o(.constdata) for bmpEnnemiOpenUp
+    game.o(i.drawGum) refers to glcd_mcbstm32e.o(i.GLCD_DrawBitmap) for GLCD_DrawBitmap
+    game.o(i.drawGum) refers to game.o(.bss) for .bss
+    game.o(i.drawGum) refers to imagesbmp.o(.constdata) for bmpFood
+    game.o(i.drawPacMan) refers to glcd_mcbstm32e.o(i.GLCD_DrawBitmap) for GLCD_DrawBitmap
+    game.o(i.drawPacMan) refers to game.o(.data) for .data
+    game.o(i.drawPacMan) refers to imagesbmp.o(.constdata) for bmpPacManOpenDown
+    game.o(i.drawPacMan) refers to imagesbmp.o(.constdata) for bmpPacManClose
+    game.o(i.drawPacMan) refers to imagesbmp.o(.constdata) for bmpPacManOpenRight
+    game.o(i.drawPacMan) refers to imagesbmp.o(.constdata) for bmpPacManOpenLeft
+    game.o(i.drawPacMan) refers to imagesbmp.o(.constdata) for bmpPacManOpenUp
+    game.o(i.initEnnemi) refers to random.o(i.getRandom) for getRandom
+    game.o(i.initEnnemi) refers to game.o(.bss) for .bss
+    game.o(i.initGumPosition) refers to random.o(i.getRandom) for getRandom
+    game.o(i.initGumPosition) refers to game.o(.bss) for .bss
+    game.o(i.setupLevel) refers to game.o(i.initEnnemi) for initEnnemi
+    game.o(i.setupLevel) refers to game.o(i.initGumPosition) for initGumPosition
+    game.o(i.setupLevel) refers to game.o(.data) for .data
+    game.o(i.spawnGum) refers to glcd.o(i.clearZone) for clearZone
+    game.o(i.spawnGum) refers to game.o(i.initGumPosition) for initGumPosition
+    game.o(i.spawnGum) refers to game.o(i.drawGum) for drawGum
+    game.o(i.spawnGum) refers to game.o(.bss) for .bss
+    game.o(i.startLevel) refers to glcd.o(i.clearScreenGLCD) for clearScreenGLCD
+    game.o(i.startLevel) refers to game.o(i.displayScores) for displayScores
+    game.o(i.startLevel) refers to game.o(i.drawGum) for drawGum
+    game.o(i.startLevel) refers to game.o(i.drawPacMan) for drawPacMan
+    game.o(i.startLevel) refers to game.o(i.drawEnnemi) for drawEnnemi
+    game.o(i.startLevel) refers to timers.o(i.startTimer1) for startTimer1
+    game.o(i.startLevel) refers to timers.o(i.startTimer8) for startTimer8
+    game.o(i.startLevel) refers to main.o(.data) for enemiScore
+    game.o(i.stopLevel) refers to timers.o(i.stopTimer1) for stopTimer1
+    game.o(i.stopLevel) refers to timers.o(i.stopTimer8) for stopTimer8
+    game.o(i.trackGum) refers to game.o(.data) for .data
+    game.o(i.updateEnnemis) refers to game.o(i.trackGum) for trackGum
+    game.o(i.updateEnnemis) refers to glcd.o(i.clearZone) for clearZone
+    game.o(i.updateEnnemis) refers to game.o(i.drawEnnemi) for drawEnnemi
+    game.o(i.updateEnnemis) refers to game.o(i.checkCollision) for checkCollision
+    game.o(i.updateEnnemis) refers to game.o(i.displayScores) for displayScores
+    game.o(i.updateEnnemis) refers to timers.o(i.setSpeedTimer8) for setSpeedTimer8
+    game.o(i.updateEnnemis) refers to game.o(i.spawnGum) for spawnGum
+    game.o(i.updateEnnemis) refers to game.o(i.drawGum) for drawGum
+    game.o(i.updateEnnemis) refers to game.o(.data) for .data
+    game.o(i.updateEnnemis) refers to game.o(.bss) for .bss
+    game.o(i.updateEnnemis) refers to main.o(.data) for gameLost
+    game.o(i.updatePlayer) refers to gpio.o(i.joystickLeftPressed) for joystickLeftPressed
+    game.o(i.updatePlayer) refers to glcd.o(i.clearZone) for clearZone
+    game.o(i.updatePlayer) refers to gpio.o(i.joystickRightPressed) for joystickRightPressed
+    game.o(i.updatePlayer) refers to gpio.o(i.joystickUpPressed) for joystickUpPressed
+    game.o(i.updatePlayer) refers to gpio.o(i.joystickDownPressed) for joystickDownPressed
+    game.o(i.updatePlayer) refers to game.o(i.drawPacMan) for drawPacMan
+    game.o(i.updatePlayer) refers to game.o(i.checkCollision) for checkCollision
+    game.o(i.updatePlayer) refers to game.o(i.displayScores) for displayScores
+    game.o(i.updatePlayer) refers to game.o(i.initEnnemi) for initEnnemi
+    game.o(i.updatePlayer) refers to game.o(i.drawEnnemi) for drawEnnemi
+    game.o(i.updatePlayer) refers to game.o(i.spawnGum) for spawnGum
+    game.o(i.updatePlayer) refers to game.o(.data) for .data
+    game.o(i.updatePlayer) refers to game.o(.bss) for .bss
+    game.o(i.updatePlayer) refers to main.o(.data) for gameLost
+    random.o(i.getRandom) refers to rand.o(.text) for rand
+    random.o(i.initRandom) refers to timers.o(i.initTimer3) for initTimer3
+    random.o(i.setRandom) refers to timers.o(i.getTimer3Value) for getTimer3Value
+    random.o(i.setRandom) refers to rand.o(.text) for srand
+    timers.o(i.TIM1_UP_TIM10_IRQHandler) refers to game.o(i.updatePlayer) for updatePlayer
+    timers.o(i.TIM8_UP_TIM13_IRQHandler) refers to game.o(i.updateEnnemis) for updateEnnemis
+    timers.o(i.configTimer1) refers to timers.o(i.stopTimer1) for stopTimer1
+    timers.o(i.configTimer8) refers to timers.o(i.setSpeedTimer8) for setSpeedTimer8
+    timers.o(i.configTimer8) refers to timers.o(i.stopTimer8) for stopTimer8
+    timers.o(i.initTIMERS) refers to timers.o(i.configTimer1) for configTimer1
+    timers.o(i.initTIMERS) refers to timers.o(i.configTimer8) for configTimer8
+    glcd.o(i.clearScreenGLCD) refers to glcd_mcbstm32e.o(i.GLCD_SetBackgroundColor) for GLCD_SetBackgroundColor
+    glcd.o(i.clearScreenGLCD) refers to glcd_mcbstm32e.o(i.GLCD_ClearScreen) for GLCD_ClearScreen
+    glcd.o(i.clearZone) refers to glcd_mcbstm32e.o(i.GLCD_SetForegroundColor) for GLCD_SetForegroundColor
+    glcd.o(i.clearZone) refers to glcd_mcbstm32e.o(i.GLCD_DrawBargraph) for GLCD_DrawBargraph
+    glcd.o(i.initGLCD) refers to glcd_mcbstm32e.o(i.GLCD_Initialize) for GLCD_Initialize
+    glcd.o(i.initGLCD) refers to glcd.o(i.clearScreenGLCD) for clearScreenGLCD
+    glcd_fonts.o(.constdata) refers to glcd_fonts.o(.constdata) for Font_6x8_h
+    glcd_fonts.o(.constdata) refers to glcd_fonts.o(.constdata) for Font_16x24_h
+    glcd_mcbstm32e.o(i.GLCD_ClearScreen) refers to glcd_mcbstm32e.o(i.GLCD_SetWindow) for GLCD_SetWindow
+    glcd_mcbstm32e.o(i.GLCD_ClearScreen) refers to glcd_mcbstm32e.o(.data) for .data
+    glcd_mcbstm32e.o(i.GLCD_DrawBargraph) refers to glcd_mcbstm32e.o(i.GLCD_SetWindow) for GLCD_SetWindow
+    glcd_mcbstm32e.o(i.GLCD_DrawBargraph) refers to glcd_mcbstm32e.o(.data) for .data
+    glcd_mcbstm32e.o(i.GLCD_DrawBitmap) refers to glcd_mcbstm32e.o(i.GLCD_SetWindow) for GLCD_SetWindow
+    glcd_mcbstm32e.o(i.GLCD_DrawChar) refers to glcd_mcbstm32e.o(i.GLCD_SetWindow) for GLCD_SetWindow
+    glcd_mcbstm32e.o(i.GLCD_DrawChar) refers to glcd_mcbstm32e.o(.data) for .data
+    glcd_mcbstm32e.o(i.GLCD_DrawHLine) refers to glcd_mcbstm32e.o(i.GLCD_SetWindow) for GLCD_SetWindow
+    glcd_mcbstm32e.o(i.GLCD_DrawHLine) refers to glcd_mcbstm32e.o(.data) for .data
+    glcd_mcbstm32e.o(i.GLCD_DrawPixel) refers to glcd_mcbstm32e.o(i.wr_reg) for wr_reg
+    glcd_mcbstm32e.o(i.GLCD_DrawPixel) refers to glcd_mcbstm32e.o(.data) for .data
+    glcd_mcbstm32e.o(i.GLCD_DrawRectangle) refers to glcd_mcbstm32e.o(i.GLCD_DrawHLine) for GLCD_DrawHLine
+    glcd_mcbstm32e.o(i.GLCD_DrawRectangle) refers to glcd_mcbstm32e.o(i.GLCD_DrawVLine) for GLCD_DrawVLine
+    glcd_mcbstm32e.o(i.GLCD_DrawString) refers to glcd_mcbstm32e.o(i.GLCD_DrawChar) for GLCD_DrawChar
+    glcd_mcbstm32e.o(i.GLCD_DrawString) refers to glcd_mcbstm32e.o(.data) for .data
+    glcd_mcbstm32e.o(i.GLCD_DrawVLine) refers to glcd_mcbstm32e.o(i.GLCD_SetWindow) for GLCD_SetWindow
+    glcd_mcbstm32e.o(i.GLCD_DrawVLine) refers to glcd_mcbstm32e.o(.data) for .data
+    glcd_mcbstm32e.o(i.GLCD_FrameBufferAccess) refers to glcd_mcbstm32e.o(i.GLCD_SetWindow) for GLCD_SetWindow
+    glcd_mcbstm32e.o(i.GLCD_FrameBufferAccess) refers to glcd_mcbstm32e.o(i.wr_reg) for wr_reg
+    glcd_mcbstm32e.o(i.GLCD_Initialize) refers to glcd_mcbstm32e.o(i.delay_ms) for delay_ms
+    glcd_mcbstm32e.o(i.GLCD_Initialize) refers to glcd_mcbstm32e.o(i.wr_reg) for wr_reg
+    glcd_mcbstm32e.o(i.GLCD_Initialize) refers to glcd_mcbstm32e.o(.data) for .data
+    glcd_mcbstm32e.o(i.GLCD_ReadPixel) refers to glcd_mcbstm32e.o(i.wr_reg) for wr_reg
+    glcd_mcbstm32e.o(i.GLCD_ReadPixel) refers to glcd_mcbstm32e.o(.data) for .data
+    glcd_mcbstm32e.o(i.GLCD_SetBackgroundColor) refers to glcd_mcbstm32e.o(.data) for .data
+    glcd_mcbstm32e.o(i.GLCD_SetFont) refers to glcd_mcbstm32e.o(.data) for .data
+    glcd_mcbstm32e.o(i.GLCD_SetForegroundColor) refers to glcd_mcbstm32e.o(.data) for .data
+    glcd_mcbstm32e.o(i.GLCD_SetWindow) refers to glcd_mcbstm32e.o(i.wr_reg) for wr_reg
+    glcd_mcbstm32e.o(i.GLCD_SetWindow) refers to glcd_mcbstm32e.o(.data) for .data
+    glcd_mcbstm32e.o(i.delay_ms) refers to system_stm32f10x.o(.data) for SystemCoreClock
+    stm32f10x_gpio.o(i.GPIO_AFIODeInit) refers to stm32f10x_rcc.o(i.RCC_APB2PeriphResetCmd) for RCC_APB2PeriphResetCmd
+    stm32f10x_gpio.o(i.GPIO_DeInit) refers to stm32f10x_rcc.o(i.RCC_APB2PeriphResetCmd) for RCC_APB2PeriphResetCmd
+    stm32f10x_rcc.o(i.RCC_GetClocksFreq) refers to stm32f10x_rcc.o(.data) for .data
+    stm32f10x_rcc.o(i.RCC_WaitForHSEStartUp) refers to stm32f10x_rcc.o(i.RCC_GetFlagStatus) for RCC_GetFlagStatus
+    startup_stm32f10x_xl.o(RESET) refers to startup_stm32f10x_xl.o(STACK) for __initial_sp
+    startup_stm32f10x_xl.o(RESET) refers to startup_stm32f10x_xl.o(.text) for Reset_Handler
+    startup_stm32f10x_xl.o(RESET) refers to timers.o(i.TIM1_UP_TIM10_IRQHandler) for TIM1_UP_TIM10_IRQHandler
+    startup_stm32f10x_xl.o(RESET) refers to timers.o(i.TIM8_UP_TIM13_IRQHandler) for TIM8_UP_TIM13_IRQHandler
+    startup_stm32f10x_xl.o(.text) refers to system_stm32f10x.o(i.SystemInit) for SystemInit
+    startup_stm32f10x_xl.o(.text) refers to entry.o(.ARM.Collect$$$$00000000) for __main
+    system_stm32f10x.o(i.SetSysClock) refers to system_stm32f10x.o(i.SetSysClockTo72) for SetSysClockTo72
+    system_stm32f10x.o(i.SystemCoreClockUpdate) refers to system_stm32f10x.o(.data) for .data
+    system_stm32f10x.o(i.SystemInit) refers to system_stm32f10x.o(i.SetSysClock) for SetSysClock
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry10a.o(.ARM.Collect$$$$0000000D) for __rt_final_cpp
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry11a.o(.ARM.Collect$$$$0000000F) for __rt_final_exit
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry7b.o(.ARM.Collect$$$$00000008) for _main_clock
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry8b.o(.ARM.Collect$$$$0000000A) for _main_cpp_init
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry9a.o(.ARM.Collect$$$$0000000B) for _main_init
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry5.o(.ARM.Collect$$$$00000004) for _main_scatterload
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry2.o(.ARM.Collect$$$$00000001) for _main_stk
+    rand.o(.text) refers to rand.o(.data) for .data
+    printfb.o(i.__0fprintf$bare) refers to printfb.o(i._printf_core) for _printf_core
+    printfb.o(i.__0fprintf$bare) refers to fputc.o(i.fputc) for fputc
+    printfb.o(i.__0printf$bare) refers to printfb.o(i._printf_core) for _printf_core
+    printfb.o(i.__0printf$bare) refers to fputc.o(i.fputc) for fputc
+    printfb.o(i.__0printf$bare) refers to stdout.o(.data) for __stdout
+    printfb.o(i.__0snprintf$bare) refers to printfb.o(i._printf_core) for _printf_core
+    printfb.o(i.__0snprintf$bare) refers to printfb.o(i._snputc) for _snputc
+    printfb.o(i.__0sprintf$bare) refers to printfb.o(i._printf_core) for _printf_core
+    printfb.o(i.__0sprintf$bare) refers to printfb.o(i._sputc) for _sputc
+    printfb.o(i.__0vfprintf$bare) refers to printfb.o(i._printf_core) for _printf_core
+    printfb.o(i.__0vfprintf$bare) refers to fputc.o(i.fputc) for fputc
+    printfb.o(i.__0vprintf$bare) refers to printfb.o(i._printf_core) for _printf_core
+    printfb.o(i.__0vprintf$bare) refers to fputc.o(i.fputc) for fputc
+    printfb.o(i.__0vprintf$bare) refers to stdout.o(.data) for __stdout
+    printfb.o(i.__0vsnprintf$bare) refers to printfb.o(i._printf_core) for _printf_core
+    printfb.o(i.__0vsnprintf$bare) refers to printfb.o(i._snputc) for _snputc
+    printfb.o(i.__0vsprintf$bare) refers to printfb.o(i._printf_core) for _printf_core
+    printfb.o(i.__0vsprintf$bare) refers to printfb.o(i._sputc) for _sputc
+    printf0.o(i.__0fprintf$0) refers to printf0.o(i._printf_core) for _printf_core
+    printf0.o(i.__0fprintf$0) refers to fputc.o(i.fputc) for fputc
+    printf0.o(i.__0printf$0) refers to printf0.o(i._printf_core) for _printf_core
+    printf0.o(i.__0printf$0) refers to fputc.o(i.fputc) for fputc
+    printf0.o(i.__0printf$0) refers to stdout.o(.data) for __stdout
+    printf0.o(i.__0snprintf$0) refers to printf0.o(i._printf_core) for _printf_core
+    printf0.o(i.__0snprintf$0) refers to printf0.o(i._snputc) for _snputc
+    printf0.o(i.__0sprintf$0) refers to printf0.o(i._printf_core) for _printf_core
+    printf0.o(i.__0sprintf$0) refers to printf0.o(i._sputc) for _sputc
+    printf0.o(i.__0vfprintf$0) refers to printf0.o(i._printf_core) for _printf_core
+    printf0.o(i.__0vfprintf$0) refers to fputc.o(i.fputc) for fputc
+    printf0.o(i.__0vprintf$0) refers to printf0.o(i._printf_core) for _printf_core
+    printf0.o(i.__0vprintf$0) refers to fputc.o(i.fputc) for fputc
+    printf0.o(i.__0vprintf$0) refers to stdout.o(.data) for __stdout
+    printf0.o(i.__0vsnprintf$0) refers to printf0.o(i._printf_core) for _printf_core
+    printf0.o(i.__0vsnprintf$0) refers to printf0.o(i._snputc) for _snputc
+    printf0.o(i.__0vsprintf$0) refers to printf0.o(i._printf_core) for _printf_core
+    printf0.o(i.__0vsprintf$0) refers to printf0.o(i._sputc) for _sputc
+    printf1.o(i.__0fprintf$1) refers to printf1.o(i._printf_core) for _printf_core
+    printf1.o(i.__0fprintf$1) refers to fputc.o(i.fputc) for fputc
+    printf1.o(i.__0printf$1) refers to printf1.o(i._printf_core) for _printf_core
+    printf1.o(i.__0printf$1) refers to fputc.o(i.fputc) for fputc
+    printf1.o(i.__0printf$1) refers to stdout.o(.data) for __stdout
+    printf1.o(i.__0snprintf$1) refers to printf1.o(i._printf_core) for _printf_core
+    printf1.o(i.__0snprintf$1) refers to printf1.o(i._snputc) for _snputc
+    printf1.o(i.__0sprintf$1) refers to printf1.o(i._printf_core) for _printf_core
+    printf1.o(i.__0sprintf$1) refers to printf1.o(i._sputc) for _sputc
+    printf1.o(i.__0vfprintf$1) refers to printf1.o(i._printf_core) for _printf_core
+    printf1.o(i.__0vfprintf$1) refers to fputc.o(i.fputc) for fputc
+    printf1.o(i.__0vprintf$1) refers to printf1.o(i._printf_core) for _printf_core
+    printf1.o(i.__0vprintf$1) refers to fputc.o(i.fputc) for fputc
+    printf1.o(i.__0vprintf$1) refers to stdout.o(.data) for __stdout
+    printf1.o(i.__0vsnprintf$1) refers to printf1.o(i._printf_core) for _printf_core
+    printf1.o(i.__0vsnprintf$1) refers to printf1.o(i._snputc) for _snputc
+    printf1.o(i.__0vsprintf$1) refers to printf1.o(i._printf_core) for _printf_core
+    printf1.o(i.__0vsprintf$1) refers to printf1.o(i._sputc) for _sputc
+    printf1.o(i._printf_core) refers to uidiv.o(.text) for __aeabi_uidivmod
+    printf2.o(i.__0fprintf$2) refers to printf2.o(i._printf_core) for _printf_core
+    printf2.o(i.__0fprintf$2) refers to fputc.o(i.fputc) for fputc
+    printf2.o(i.__0printf$2) refers to printf2.o(i._printf_core) for _printf_core
+    printf2.o(i.__0printf$2) refers to fputc.o(i.fputc) for fputc
+    printf2.o(i.__0printf$2) refers to stdout.o(.data) for __stdout
+    printf2.o(i.__0snprintf$2) refers to printf2.o(i._printf_core) for _printf_core
+    printf2.o(i.__0snprintf$2) refers to printf2.o(i._snputc) for _snputc
+    printf2.o(i.__0sprintf$2) refers to printf2.o(i._printf_core) for _printf_core
+    printf2.o(i.__0sprintf$2) refers to printf2.o(i._sputc) for _sputc
+    printf2.o(i.__0vfprintf$2) refers to printf2.o(i._printf_core) for _printf_core
+    printf2.o(i.__0vfprintf$2) refers to fputc.o(i.fputc) for fputc
+    printf2.o(i.__0vprintf$2) refers to printf2.o(i._printf_core) for _printf_core
+    printf2.o(i.__0vprintf$2) refers to fputc.o(i.fputc) for fputc
+    printf2.o(i.__0vprintf$2) refers to stdout.o(.data) for __stdout
+    printf2.o(i.__0vsnprintf$2) refers to printf2.o(i._printf_core) for _printf_core
+    printf2.o(i.__0vsnprintf$2) refers to printf2.o(i._snputc) for _snputc
+    printf2.o(i.__0vsprintf$2) refers to printf2.o(i._printf_core) for _printf_core
+    printf2.o(i.__0vsprintf$2) refers to printf2.o(i._sputc) for _sputc
+    printf3.o(i.__0fprintf$3) refers to printf3.o(i._printf_core) for _printf_core
+    printf3.o(i.__0fprintf$3) refers to fputc.o(i.fputc) for fputc
+    printf3.o(i.__0printf$3) refers to printf3.o(i._printf_core) for _printf_core
+    printf3.o(i.__0printf$3) refers to fputc.o(i.fputc) for fputc
+    printf3.o(i.__0printf$3) refers to stdout.o(.data) for __stdout
+    printf3.o(i.__0snprintf$3) refers to printf3.o(i._printf_core) for _printf_core
+    printf3.o(i.__0snprintf$3) refers to printf3.o(i._snputc) for _snputc
+    printf3.o(i.__0sprintf$3) refers to printf3.o(i._printf_core) for _printf_core
+    printf3.o(i.__0sprintf$3) refers to printf3.o(i._sputc) for _sputc
+    printf3.o(i.__0vfprintf$3) refers to printf3.o(i._printf_core) for _printf_core
+    printf3.o(i.__0vfprintf$3) refers to fputc.o(i.fputc) for fputc
+    printf3.o(i.__0vprintf$3) refers to printf3.o(i._printf_core) for _printf_core
+    printf3.o(i.__0vprintf$3) refers to fputc.o(i.fputc) for fputc
+    printf3.o(i.__0vprintf$3) refers to stdout.o(.data) for __stdout
+    printf3.o(i.__0vsnprintf$3) refers to printf3.o(i._printf_core) for _printf_core
+    printf3.o(i.__0vsnprintf$3) refers to printf3.o(i._snputc) for _snputc
+    printf3.o(i.__0vsprintf$3) refers to printf3.o(i._printf_core) for _printf_core
+    printf3.o(i.__0vsprintf$3) refers to printf3.o(i._sputc) for _sputc
+    printf3.o(i._printf_core) refers to uidiv.o(.text) for __aeabi_uidivmod
+    printf4.o(i.__0fprintf$4) refers to printf4.o(i._printf_core) for _printf_core
+    printf4.o(i.__0fprintf$4) refers to fputc.o(i.fputc) for fputc
+    printf4.o(i.__0printf$4) refers to printf4.o(i._printf_core) for _printf_core
+    printf4.o(i.__0printf$4) refers to fputc.o(i.fputc) for fputc
+    printf4.o(i.__0printf$4) refers to stdout.o(.data) for __stdout
+    printf4.o(i.__0snprintf$4) refers to printf4.o(i._printf_core) for _printf_core
+    printf4.o(i.__0snprintf$4) refers to printf4.o(i._snputc) for _snputc
+    printf4.o(i.__0sprintf$4) refers to printf4.o(i._printf_core) for _printf_core
+    printf4.o(i.__0sprintf$4) refers to printf4.o(i._sputc) for _sputc
+    printf4.o(i.__0vfprintf$4) refers to printf4.o(i._printf_core) for _printf_core
+    printf4.o(i.__0vfprintf$4) refers to fputc.o(i.fputc) for fputc
+    printf4.o(i.__0vprintf$4) refers to printf4.o(i._printf_core) for _printf_core
+    printf4.o(i.__0vprintf$4) refers to fputc.o(i.fputc) for fputc
+    printf4.o(i.__0vprintf$4) refers to stdout.o(.data) for __stdout
+    printf4.o(i.__0vsnprintf$4) refers to printf4.o(i._printf_core) for _printf_core
+    printf4.o(i.__0vsnprintf$4) refers to printf4.o(i._snputc) for _snputc
+    printf4.o(i.__0vsprintf$4) refers to printf4.o(i._printf_core) for _printf_core
+    printf4.o(i.__0vsprintf$4) refers to printf4.o(i._sputc) for _sputc
+    printf4.o(i._printf_core) refers to uldiv.o(.text) for __aeabi_uldivmod
+    printf5.o(i.__0fprintf$5) refers to printf5.o(i._printf_core) for _printf_core
+    printf5.o(i.__0fprintf$5) refers to fputc.o(i.fputc) for fputc
+    printf5.o(i.__0printf$5) refers to printf5.o(i._printf_core) for _printf_core
+    printf5.o(i.__0printf$5) refers to fputc.o(i.fputc) for fputc
+    printf5.o(i.__0printf$5) refers to stdout.o(.data) for __stdout
+    printf5.o(i.__0snprintf$5) refers to printf5.o(i._printf_core) for _printf_core
+    printf5.o(i.__0snprintf$5) refers to printf5.o(i._snputc) for _snputc
+    printf5.o(i.__0sprintf$5) refers to printf5.o(i._printf_core) for _printf_core
+    printf5.o(i.__0sprintf$5) refers to printf5.o(i._sputc) for _sputc
+    printf5.o(i.__0vfprintf$5) refers to printf5.o(i._printf_core) for _printf_core
+    printf5.o(i.__0vfprintf$5) refers to fputc.o(i.fputc) for fputc
+    printf5.o(i.__0vprintf$5) refers to printf5.o(i._printf_core) for _printf_core
+    printf5.o(i.__0vprintf$5) refers to fputc.o(i.fputc) for fputc
+    printf5.o(i.__0vprintf$5) refers to stdout.o(.data) for __stdout
+    printf5.o(i.__0vsnprintf$5) refers to printf5.o(i._printf_core) for _printf_core
+    printf5.o(i.__0vsnprintf$5) refers to printf5.o(i._snputc) for _snputc
+    printf5.o(i.__0vsprintf$5) refers to printf5.o(i._printf_core) for _printf_core
+    printf5.o(i.__0vsprintf$5) refers to printf5.o(i._sputc) for _sputc
+    printf5.o(i._printf_core) refers to uldiv.o(.text) for __aeabi_uldivmod
+    printf6.o(i.__0fprintf$6) refers to printf6.o(i._printf_core) for _printf_core
+    printf6.o(i.__0fprintf$6) refers to fputc.o(i.fputc) for fputc
+    printf6.o(i.__0printf$6) refers to printf6.o(i._printf_core) for _printf_core
+    printf6.o(i.__0printf$6) refers to fputc.o(i.fputc) for fputc
+    printf6.o(i.__0printf$6) refers to stdout.o(.data) for __stdout
+    printf6.o(i.__0snprintf$6) refers to printf6.o(i._printf_core) for _printf_core
+    printf6.o(i.__0snprintf$6) refers to printf6.o(i._snputc) for _snputc
+    printf6.o(i.__0sprintf$6) refers to printf6.o(i._printf_core) for _printf_core
+    printf6.o(i.__0sprintf$6) refers to printf6.o(i._sputc) for _sputc
+    printf6.o(i.__0vfprintf$6) refers to printf6.o(i._printf_core) for _printf_core
+    printf6.o(i.__0vfprintf$6) refers to fputc.o(i.fputc) for fputc
+    printf6.o(i.__0vprintf$6) refers to printf6.o(i._printf_core) for _printf_core
+    printf6.o(i.__0vprintf$6) refers to fputc.o(i.fputc) for fputc
+    printf6.o(i.__0vprintf$6) refers to stdout.o(.data) for __stdout
+    printf6.o(i.__0vsnprintf$6) refers to printf6.o(i._printf_core) for _printf_core
+    printf6.o(i.__0vsnprintf$6) refers to printf6.o(i._snputc) for _snputc
+    printf6.o(i.__0vsprintf$6) refers to printf6.o(i._printf_core) for _printf_core
+    printf6.o(i.__0vsprintf$6) refers to printf6.o(i._sputc) for _sputc
+    printf6.o(i._printf_core) refers to printf6.o(i._printf_pre_padding) for _printf_pre_padding
+    printf6.o(i._printf_core) refers to uidiv.o(.text) for __aeabi_uidivmod
+    printf6.o(i._printf_core) refers to printf6.o(i._printf_post_padding) for _printf_post_padding
+    printf7.o(i.__0fprintf$7) refers to printf7.o(i._printf_core) for _printf_core
+    printf7.o(i.__0fprintf$7) refers to fputc.o(i.fputc) for fputc
+    printf7.o(i.__0printf$7) refers to printf7.o(i._printf_core) for _printf_core
+    printf7.o(i.__0printf$7) refers to fputc.o(i.fputc) for fputc
+    printf7.o(i.__0printf$7) refers to stdout.o(.data) for __stdout
+    printf7.o(i.__0snprintf$7) refers to printf7.o(i._printf_core) for _printf_core
+    printf7.o(i.__0snprintf$7) refers to printf7.o(i._snputc) for _snputc
+    printf7.o(i.__0sprintf$7) refers to printf7.o(i._printf_core) for _printf_core
+    printf7.o(i.__0sprintf$7) refers to printf7.o(i._sputc) for _sputc
+    printf7.o(i.__0vfprintf$7) refers to printf7.o(i._printf_core) for _printf_core
+    printf7.o(i.__0vfprintf$7) refers to fputc.o(i.fputc) for fputc
+    printf7.o(i.__0vprintf$7) refers to printf7.o(i._printf_core) for _printf_core
+    printf7.o(i.__0vprintf$7) refers to fputc.o(i.fputc) for fputc
+    printf7.o(i.__0vprintf$7) refers to stdout.o(.data) for __stdout
+    printf7.o(i.__0vsnprintf$7) refers to printf7.o(i._printf_core) for _printf_core
+    printf7.o(i.__0vsnprintf$7) refers to printf7.o(i._snputc) for _snputc
+    printf7.o(i.__0vsprintf$7) refers to printf7.o(i._printf_core) for _printf_core
+    printf7.o(i.__0vsprintf$7) refers to printf7.o(i._sputc) for _sputc
+    printf7.o(i._printf_core) refers to printf7.o(i._printf_pre_padding) for _printf_pre_padding
+    printf7.o(i._printf_core) refers to uldiv.o(.text) for __aeabi_uldivmod
+    printf7.o(i._printf_core) refers to printf7.o(i._printf_post_padding) for _printf_post_padding
+    printf8.o(i.__0fprintf$8) refers to printf8.o(i._printf_core) for _printf_core
+    printf8.o(i.__0fprintf$8) refers to fputc.o(i.fputc) for fputc
+    printf8.o(i.__0printf$8) refers to printf8.o(i._printf_core) for _printf_core
+    printf8.o(i.__0printf$8) refers to fputc.o(i.fputc) for fputc
+    printf8.o(i.__0printf$8) refers to stdout.o(.data) for __stdout
+    printf8.o(i.__0snprintf$8) refers to printf8.o(i._printf_core) for _printf_core
+    printf8.o(i.__0snprintf$8) refers to printf8.o(i._snputc) for _snputc
+    printf8.o(i.__0sprintf$8) refers to printf8.o(i._printf_core) for _printf_core
+    printf8.o(i.__0sprintf$8) refers to printf8.o(i._sputc) for _sputc
+    printf8.o(i.__0vfprintf$8) refers to printf8.o(i._printf_core) for _printf_core
+    printf8.o(i.__0vfprintf$8) refers to fputc.o(i.fputc) for fputc
+    printf8.o(i.__0vprintf$8) refers to printf8.o(i._printf_core) for _printf_core
+    printf8.o(i.__0vprintf$8) refers to fputc.o(i.fputc) for fputc
+    printf8.o(i.__0vprintf$8) refers to stdout.o(.data) for __stdout
+    printf8.o(i.__0vsnprintf$8) refers to printf8.o(i._printf_core) for _printf_core
+    printf8.o(i.__0vsnprintf$8) refers to printf8.o(i._snputc) for _snputc
+    printf8.o(i.__0vsprintf$8) refers to printf8.o(i._printf_core) for _printf_core
+    printf8.o(i.__0vsprintf$8) refers to printf8.o(i._sputc) for _sputc
+    printf8.o(i._printf_core) refers to printf8.o(i._printf_pre_padding) for _printf_pre_padding
+    printf8.o(i._printf_core) refers to uldiv.o(.text) for __aeabi_uldivmod
+    printf8.o(i._printf_core) refers to printf8.o(i._printf_post_padding) for _printf_post_padding
+    printfa.o(i.__0fprintf) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i.__0fprintf) refers to printfa.o(i._printf_core) for _printf_core
+    printfa.o(i.__0fprintf) refers to fputc.o(i.fputc) for fputc
+    printfa.o(i.__0printf) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i.__0printf) refers to printfa.o(i._printf_core) for _printf_core
+    printfa.o(i.__0printf) refers to fputc.o(i.fputc) for fputc
+    printfa.o(i.__0printf) refers to stdout.o(.data) for __stdout
+    printfa.o(i.__0snprintf) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i.__0snprintf) refers to printfa.o(i._printf_core) for _printf_core
+    printfa.o(i.__0snprintf) refers to printfa.o(i._snputc) for _snputc
+    printfa.o(i.__0sprintf) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i.__0sprintf) refers to printfa.o(i._printf_core) for _printf_core
+    printfa.o(i.__0sprintf) refers to printfa.o(i._sputc) for _sputc
+    printfa.o(i.__0vfprintf) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i.__0vfprintf) refers to printfa.o(i._printf_core) for _printf_core
+    printfa.o(i.__0vfprintf) refers to fputc.o(i.fputc) for fputc
+    printfa.o(i.__0vprintf) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i.__0vprintf) refers to printfa.o(i._printf_core) for _printf_core
+    printfa.o(i.__0vprintf) refers to fputc.o(i.fputc) for fputc
+    printfa.o(i.__0vprintf) refers to stdout.o(.data) for __stdout
+    printfa.o(i.__0vsnprintf) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i.__0vsnprintf) refers to printfa.o(i._printf_core) for _printf_core
+    printfa.o(i.__0vsnprintf) refers to printfa.o(i._snputc) for _snputc
+    printfa.o(i.__0vsprintf) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i.__0vsprintf) refers to printfa.o(i._printf_core) for _printf_core
+    printfa.o(i.__0vsprintf) refers to printfa.o(i._sputc) for _sputc
+    printfa.o(i._fp_digits) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i._fp_digits) refers to dmul.o(.text) for __aeabi_dmul
+    printfa.o(i._fp_digits) refers to ddiv.o(.text) for __aeabi_ddiv
+    printfa.o(i._fp_digits) refers to cdrcmple.o(.text) for __aeabi_cdrcmple
+    printfa.o(i._fp_digits) refers to dadd.o(.text) for __aeabi_dadd
+    printfa.o(i._fp_digits) refers to dfixul.o(.text) for __aeabi_d2ulz
+    printfa.o(i._fp_digits) refers to uldiv.o(.text) for __aeabi_uldivmod
+    printfa.o(i._printf_core) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i._printf_core) refers to printfa.o(i._printf_pre_padding) for _printf_pre_padding
+    printfa.o(i._printf_core) refers to uldiv.o(.text) for __aeabi_uldivmod
+    printfa.o(i._printf_core) refers to printfa.o(i._printf_post_padding) for _printf_post_padding
+    printfa.o(i._printf_core) refers to printfa.o(i._fp_digits) for _fp_digits
+    printfa.o(i._printf_core) refers to uidiv.o(.text) for __aeabi_uidivmod
+    printfa.o(i._printf_post_padding) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i._printf_pre_padding) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i._snputc) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i._sputc) refers (Special) to iusefp.o(.text) for __I$use$fp
+    entry2.o(.ARM.Collect$$$$00000001) refers to entry2.o(.ARM.Collect$$$$00002712) for __lit__00000000
+    entry2.o(.ARM.Collect$$$$00002712) refers to startup_stm32f10x_xl.o(STACK) for __initial_sp
+    entry2.o(__vectab_stack_and_reset_area) refers to startup_stm32f10x_xl.o(STACK) for __initial_sp
+    entry2.o(__vectab_stack_and_reset_area) refers to entry.o(.ARM.Collect$$$$00000000) for __main
+    entry5.o(.ARM.Collect$$$$00000004) refers to init.o(.text) for __scatterload
+    entry9a.o(.ARM.Collect$$$$0000000B) refers to main.o(i.main) for main
+    entry9b.o(.ARM.Collect$$$$0000000C) refers to main.o(i.main) for main
+    fputc.o(i.fputc) refers (Special) to iusesemip.o(.text) for __I$use$semihosting$fputc
+    fputc.o(i.fputc) refers (Special) to semi.o(.text) for __semihosting_library_function
+    uldiv.o(.text) refers to llushr.o(.text) for __aeabi_llsr
+    uldiv.o(.text) refers to llshl.o(.text) for __aeabi_llsl
+    dadd.o(.text) refers to llshl.o(.text) for __aeabi_llsl
+    dadd.o(.text) refers to llsshr.o(.text) for __aeabi_lasr
+    dadd.o(.text) refers to depilogue.o(.text) for _double_epilogue
+    dmul.o(.text) refers to depilogue.o(.text) for _double_epilogue
+    ddiv.o(.text) refers to depilogue.o(.text) for _double_round
+    dfixul.o(.text) refers to llushr.o(.text) for __aeabi_llsr
+    dfixul.o(.text) refers to llshl.o(.text) for __aeabi_llsl
+    init.o(.text) refers to entry5.o(.ARM.Collect$$$$00000004) for __main_after_scatterload
+    depilogue.o(.text) refers to llshl.o(.text) for __aeabi_llsl
+    depilogue.o(.text) refers to llushr.o(.text) for __aeabi_llsr
+
+
+==============================================================================
+
+Removing Unused input sections from the image.
+
+    Removing main.o(.rev16_text), (4 bytes).
+    Removing main.o(.revsh_text), (4 bytes).
+    Removing main.o(.rrx_text), (6 bytes).
+    Removing menu.o(.rev16_text), (4 bytes).
+    Removing menu.o(.revsh_text), (4 bytes).
+    Removing menu.o(.rrx_text), (6 bytes).
+    Removing game.o(.rev16_text), (4 bytes).
+    Removing game.o(.revsh_text), (4 bytes).
+    Removing game.o(.rrx_text), (6 bytes).
+    Removing game.o(i.displayEndGame), (20 bytes).
+    Removing gpio.o(.rev16_text), (4 bytes).
+    Removing gpio.o(.revsh_text), (4 bytes).
+    Removing gpio.o(.rrx_text), (6 bytes).
+    Removing gpio.o(i.startInterruptBP_USER), (64 bytes).
+    Removing gpio.o(i.stopInterruptBP_USER), (16 bytes).
+    Removing timers.o(.rev16_text), (4 bytes).
+    Removing timers.o(.revsh_text), (4 bytes).
+    Removing timers.o(.rrx_text), (6 bytes).
+    Removing glcd.o(.rev16_text), (4 bytes).
+    Removing glcd.o(.revsh_text), (4 bytes).
+    Removing glcd.o(.rrx_text), (6 bytes).
+    Removing glcd_mcbstm32e.o(.rev16_text), (4 bytes).
+    Removing glcd_mcbstm32e.o(.revsh_text), (4 bytes).
+    Removing glcd_mcbstm32e.o(.rrx_text), (6 bytes).
+    Removing glcd_mcbstm32e.o(i.GLCD_DrawHLine), (40 bytes).
+    Removing glcd_mcbstm32e.o(i.GLCD_DrawPixel), (128 bytes).
+    Removing glcd_mcbstm32e.o(i.GLCD_DrawRectangle), (58 bytes).
+    Removing glcd_mcbstm32e.o(i.GLCD_DrawVLine), (40 bytes).
+    Removing glcd_mcbstm32e.o(i.GLCD_FrameBufferAccess), (44 bytes).
+    Removing glcd_mcbstm32e.o(i.GLCD_FrameBufferAddress), (8 bytes).
+    Removing glcd_mcbstm32e.o(i.GLCD_ReadPixel), (160 bytes).
+    Removing glcd_mcbstm32e.o(i.GLCD_Uninitialize), (16 bytes).
+    Removing glcd_mcbstm32e.o(i.GLCD_VScroll), (6 bytes).
+    Removing misc.o(.rev16_text), (4 bytes).
+    Removing misc.o(.revsh_text), (4 bytes).
+    Removing misc.o(.rrx_text), (6 bytes).
+    Removing misc.o(i.NVIC_Init), (100 bytes).
+    Removing misc.o(i.NVIC_PriorityGroupConfig), (20 bytes).
+    Removing misc.o(i.NVIC_SetVectorTable), (20 bytes).
+    Removing misc.o(i.NVIC_SystemLPConfig), (28 bytes).
+    Removing misc.o(i.SysTick_CLKSourceConfig), (28 bytes).
+    Removing stm32f10x_gpio.o(.rev16_text), (4 bytes).
+    Removing stm32f10x_gpio.o(.revsh_text), (4 bytes).
+    Removing stm32f10x_gpio.o(.rrx_text), (6 bytes).
+    Removing stm32f10x_gpio.o(i.GPIO_AFIODeInit), (22 bytes).
+    Removing stm32f10x_gpio.o(i.GPIO_DeInit), (216 bytes).
+    Removing stm32f10x_gpio.o(i.GPIO_ETH_MediaInterfaceConfig), (12 bytes).
+    Removing stm32f10x_gpio.o(i.GPIO_EXTILineConfig), (40 bytes).
+    Removing stm32f10x_gpio.o(i.GPIO_EventOutputCmd), (12 bytes).
+    Removing stm32f10x_gpio.o(i.GPIO_EventOutputConfig), (28 bytes).
+    Removing stm32f10x_gpio.o(i.GPIO_Init), (166 bytes).
+    Removing stm32f10x_gpio.o(i.GPIO_PinLockConfig), (16 bytes).
+    Removing stm32f10x_gpio.o(i.GPIO_PinRemapConfig), (92 bytes).
+    Removing stm32f10x_gpio.o(i.GPIO_ReadInputData), (6 bytes).
+    Removing stm32f10x_gpio.o(i.GPIO_ReadInputDataBit), (14 bytes).
+    Removing stm32f10x_gpio.o(i.GPIO_ReadOutputData), (6 bytes).
+    Removing stm32f10x_gpio.o(i.GPIO_ReadOutputDataBit), (14 bytes).
+    Removing stm32f10x_gpio.o(i.GPIO_ResetBits), (4 bytes).
+    Removing stm32f10x_gpio.o(i.GPIO_SetBits), (4 bytes).
+    Removing stm32f10x_gpio.o(i.GPIO_StructInit), (16 bytes).
+    Removing stm32f10x_gpio.o(i.GPIO_Write), (4 bytes).
+    Removing stm32f10x_gpio.o(i.GPIO_WriteBit), (12 bytes).
+    Removing stm32f10x_rcc.o(.rev16_text), (4 bytes).
+    Removing stm32f10x_rcc.o(.revsh_text), (4 bytes).
+    Removing stm32f10x_rcc.o(.rrx_text), (6 bytes).
+    Removing stm32f10x_rcc.o(i.RCC_ADCCLKConfig), (20 bytes).
+    Removing stm32f10x_rcc.o(i.RCC_AHBPeriphClockCmd), (28 bytes).
+    Removing stm32f10x_rcc.o(i.RCC_APB1PeriphClockCmd), (28 bytes).
+    Removing stm32f10x_rcc.o(i.RCC_APB1PeriphResetCmd), (28 bytes).
+    Removing stm32f10x_rcc.o(i.RCC_APB2PeriphClockCmd), (28 bytes).
+    Removing stm32f10x_rcc.o(i.RCC_APB2PeriphResetCmd), (28 bytes).
+    Removing stm32f10x_rcc.o(i.RCC_AdjustHSICalibrationValue), (20 bytes).
+    Removing stm32f10x_rcc.o(i.RCC_BackupResetCmd), (12 bytes).
+    Removing stm32f10x_rcc.o(i.RCC_ClearFlag), (16 bytes).
+    Removing stm32f10x_rcc.o(i.RCC_ClearITPendingBit), (12 bytes).
+    Removing stm32f10x_rcc.o(i.RCC_ClockSecuritySystemCmd), (12 bytes).
+    Removing stm32f10x_rcc.o(i.RCC_DeInit), (64 bytes).
+    Removing stm32f10x_rcc.o(i.RCC_GetClocksFreq), (172 bytes).
+    Removing stm32f10x_rcc.o(i.RCC_GetFlagStatus), (48 bytes).
+    Removing stm32f10x_rcc.o(i.RCC_GetITStatus), (20 bytes).
+    Removing stm32f10x_rcc.o(i.RCC_GetSYSCLKSource), (16 bytes).
+    Removing stm32f10x_rcc.o(i.RCC_HCLKConfig), (20 bytes).
+    Removing stm32f10x_rcc.o(i.RCC_HSEConfig), (56 bytes).
+    Removing stm32f10x_rcc.o(i.RCC_HSICmd), (12 bytes).
+    Removing stm32f10x_rcc.o(i.RCC_ITConfig), (28 bytes).
+    Removing stm32f10x_rcc.o(i.RCC_LSEConfig), (40 bytes).
+    Removing stm32f10x_rcc.o(i.RCC_LSICmd), (12 bytes).
+    Removing stm32f10x_rcc.o(i.RCC_MCOConfig), (12 bytes).
+    Removing stm32f10x_rcc.o(i.RCC_PCLK1Config), (20 bytes).
+    Removing stm32f10x_rcc.o(i.RCC_PCLK2Config), (20 bytes).
+    Removing stm32f10x_rcc.o(i.RCC_PLLCmd), (12 bytes).
+    Removing stm32f10x_rcc.o(i.RCC_PLLConfig), (20 bytes).
+    Removing stm32f10x_rcc.o(i.RCC_RTCCLKCmd), (12 bytes).
+    Removing stm32f10x_rcc.o(i.RCC_RTCCLKConfig), (16 bytes).
+    Removing stm32f10x_rcc.o(i.RCC_SYSCLKConfig), (20 bytes).
+    Removing stm32f10x_rcc.o(i.RCC_USBCLKConfig), (12 bytes).
+    Removing stm32f10x_rcc.o(i.RCC_WaitForHSEStartUp), (48 bytes).
+    Removing stm32f10x_rcc.o(.data), (20 bytes).
+    Removing startup_stm32f10x_xl.o(HEAP), (512 bytes).
+    Removing system_stm32f10x.o(.rev16_text), (4 bytes).
+    Removing system_stm32f10x.o(.revsh_text), (4 bytes).
+    Removing system_stm32f10x.o(.rrx_text), (6 bytes).
+    Removing system_stm32f10x.o(i.SystemCoreClockUpdate), (124 bytes).
+    Removing dadd.o(.text), (334 bytes).
+    Removing dmul.o(.text), (228 bytes).
+    Removing ddiv.o(.text), (222 bytes).
+    Removing dfixul.o(.text), (48 bytes).
+    Removing cdrcmple.o(.text), (48 bytes).
+    Removing depilogue.o(.text), (186 bytes).
+
+109 unused section(s) (total 4268 bytes) removed from the image.
+
+==============================================================================
+
+Image Symbol Table
+
+    Local Symbols
+
+    Symbol Name                              Value     Ov Type        Size  Object(Section)
+
+    ../clib/microlib/division.c              0x00000000   Number         0  uidiv.o ABSOLUTE
+    ../clib/microlib/division.c              0x00000000   Number         0  uldiv.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
+    ../clib/microlib/longlong.c              0x00000000   Number         0  llsshr.o ABSOLUTE
+    ../clib/microlib/longlong.c              0x00000000   Number         0  llushr.o ABSOLUTE
+    ../clib/microlib/longlong.c              0x00000000   Number         0  llshl.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printfb.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf0.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf2.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf3.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf5.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf6.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf7.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf8.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf4.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf1.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printfa.o ABSOLUTE
+    ../clib/microlib/printf/stubs.s          0x00000000   Number         0  stubs.o ABSOLUTE
+    ../clib/microlib/stdio/fputc.c           0x00000000   Number         0  fputc.o ABSOLUTE
+    ../clib/microlib/stdio/semi.s            0x00000000   Number         0  semi.o ABSOLUTE
+    ../clib/microlib/stdio/streams.c         0x00000000   Number         0  stdout.o ABSOLUTE
+    ../clib/microlib/stdlib/rand.c           0x00000000   Number         0  rand.o ABSOLUTE
+    ../clib/microlib/stubs.s                 0x00000000   Number         0  iusefp.o ABSOLUTE
+    ../clib/microlib/stubs.s                 0x00000000   Number         0  iusesemip.o ABSOLUTE
+    ../fplib/microlib/fpadd.c                0x00000000   Number         0  dadd.o ABSOLUTE
+    ../fplib/microlib/fpdiv.c                0x00000000   Number         0  ddiv.o ABSOLUTE
+    ../fplib/microlib/fpepilogue.c           0x00000000   Number         0  depilogue.o ABSOLUTE
+    ../fplib/microlib/fpfix.c                0x00000000   Number         0  dfixul.o ABSOLUTE
+    ../fplib/microlib/fpmul.c                0x00000000   Number         0  dmul.o ABSOLUTE
+    C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\src\misc.c 0x00000000   Number         0  misc.o ABSOLUTE
+    C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\src\stm32f10x_gpio.c 0x00000000   Number         0  stm32f10x_gpio.o ABSOLUTE
+    C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\src\stm32f10x_rcc.c 0x00000000   Number         0  stm32f10x_rcc.o ABSOLUTE
+    C:\\Keil_v5\\ARM\\PACK\\Keil\\STM32F1xx_DFP\\2.4.1\\Device\\StdPeriph_Driver\\src\\misc.c 0x00000000   Number         0  misc.o ABSOLUTE
+    C:\\Keil_v5\\ARM\\PACK\\Keil\\STM32F1xx_DFP\\2.4.1\\Device\\StdPeriph_Driver\\src\\stm32f10x_gpio.c 0x00000000   Number         0  stm32f10x_gpio.o ABSOLUTE
+    C:\\Keil_v5\\ARM\\PACK\\Keil\\STM32F1xx_DFP\\2.4.1\\Device\\StdPeriph_Driver\\src\\stm32f10x_rcc.c 0x00000000   Number         0  stm32f10x_rcc.o ABSOLUTE
+    Lib\GLCD_Fonts.c                         0x00000000   Number         0  glcd_fonts.o ABSOLUTE
+    Lib\GLCD_MCBSTM32E.c                     0x00000000   Number         0  glcd_mcbstm32e.o ABSOLUTE
+    Lib\\GLCD_MCBSTM32E.c                    0x00000000   Number         0  glcd_mcbstm32e.o ABSOLUTE
+    RTE\Device\STM32F103ZG\startup_stm32f10x_xl.s 0x00000000   Number         0  startup_stm32f10x_xl.o ABSOLUTE
+    RTE\Device\STM32F103ZG\system_stm32f10x.c 0x00000000   Number         0  system_stm32f10x.o ABSOLUTE
+    RTE\\Device\\STM32F103ZG\\system_stm32f10x.c 0x00000000   Number         0  system_stm32f10x.o ABSOLUTE
+    Sources\GAME\ImagesBMP.c                 0x00000000   Number         0  imagesbmp.o ABSOLUTE
+    Sources\GAME\game.c                      0x00000000   Number         0  game.o ABSOLUTE
+    Sources\GAME\menu.c                      0x00000000   Number         0  menu.o ABSOLUTE
+    Sources\GAME\random.c                    0x00000000   Number         0  random.o ABSOLUTE
+    Sources\HARD\GLCD.c                      0x00000000   Number         0  glcd.o ABSOLUTE
+    Sources\HARD\GPIO.c                      0x00000000   Number         0  gpio.o ABSOLUTE
+    Sources\HARD\TIMERS.c                    0x00000000   Number         0  timers.o ABSOLUTE
+    Sources\\GAME\\game.c                    0x00000000   Number         0  game.o ABSOLUTE
+    Sources\\GAME\\menu.c                    0x00000000   Number         0  menu.o ABSOLUTE
+    Sources\\HARD\\GLCD.c                    0x00000000   Number         0  glcd.o ABSOLUTE
+    Sources\\HARD\\GPIO.c                    0x00000000   Number         0  gpio.o ABSOLUTE
+    Sources\\HARD\\TIMERS.c                  0x00000000   Number         0  timers.o ABSOLUTE
+    Sources\\main.c                          0x00000000   Number         0  main.o ABSOLUTE
+    Sources\main.c                           0x00000000   Number         0  main.o ABSOLUTE
+    cdrcmple.s                               0x00000000   Number         0  cdrcmple.o ABSOLUTE
+    dc.s                                     0x00000000   Number         0  dc.o ABSOLUTE
+    handlers.s                               0x00000000   Number         0  handlers.o ABSOLUTE
+    init.s                                   0x00000000   Number         0  init.o ABSOLUTE
+    RESET                                    0x08000000   Section      304  startup_stm32f10x_xl.o(RESET)
+    .ARM.Collect$$$$00000000                 0x08000130   Section        0  entry.o(.ARM.Collect$$$$00000000)
+    .ARM.Collect$$$$00000001                 0x08000130   Section        4  entry2.o(.ARM.Collect$$$$00000001)
+    .ARM.Collect$$$$00000004                 0x08000134   Section        4  entry5.o(.ARM.Collect$$$$00000004)
+    .ARM.Collect$$$$00000008                 0x08000138   Section        0  entry7b.o(.ARM.Collect$$$$00000008)
+    .ARM.Collect$$$$0000000A                 0x08000138   Section        0  entry8b.o(.ARM.Collect$$$$0000000A)
+    .ARM.Collect$$$$0000000B                 0x08000138   Section        8  entry9a.o(.ARM.Collect$$$$0000000B)
+    .ARM.Collect$$$$0000000D                 0x08000140   Section        0  entry10a.o(.ARM.Collect$$$$0000000D)
+    .ARM.Collect$$$$0000000F                 0x08000140   Section        0  entry11a.o(.ARM.Collect$$$$0000000F)
+    .ARM.Collect$$$$00002712                 0x08000140   Section        4  entry2.o(.ARM.Collect$$$$00002712)
+    __lit__00000000                          0x08000140   Data           4  entry2.o(.ARM.Collect$$$$00002712)
+    .text                                    0x08000144   Section       36  startup_stm32f10x_xl.o(.text)
+    .text                                    0x08000168   Section        0  rand.o(.text)
+    .text                                    0x0800018c   Section        0  uidiv.o(.text)
+    .text                                    0x080001b8   Section       36  init.o(.text)
+    i.GLCD_ClearScreen                       0x080001dc   Section        0  glcd_mcbstm32e.o(i.GLCD_ClearScreen)
+    i.GLCD_DrawBargraph                      0x08000210   Section        0  glcd_mcbstm32e.o(i.GLCD_DrawBargraph)
+    i.GLCD_DrawBitmap                        0x08000260   Section        0  glcd_mcbstm32e.o(i.GLCD_DrawBitmap)
+    i.GLCD_DrawChar                          0x0800029c   Section        0  glcd_mcbstm32e.o(i.GLCD_DrawChar)
+    i.GLCD_DrawString                        0x08000318   Section        0  glcd_mcbstm32e.o(i.GLCD_DrawString)
+    i.GLCD_Initialize                        0x08000348   Section        0  glcd_mcbstm32e.o(i.GLCD_Initialize)
+    i.GLCD_SetBackgroundColor                0x0800093c   Section        0  glcd_mcbstm32e.o(i.GLCD_SetBackgroundColor)
+    i.GLCD_SetFont                           0x08000948   Section        0  glcd_mcbstm32e.o(i.GLCD_SetFont)
+    i.GLCD_SetForegroundColor                0x08000954   Section        0  glcd_mcbstm32e.o(i.GLCD_SetForegroundColor)
+    i.GLCD_SetWindow                         0x08000960   Section        0  glcd_mcbstm32e.o(i.GLCD_SetWindow)
+    GLCD_SetWindow                           0x08000961   Thumb Code   156  glcd_mcbstm32e.o(i.GLCD_SetWindow)
+    i.SetSysClock                            0x08000a00   Section        0  system_stm32f10x.o(i.SetSysClock)
+    SetSysClock                              0x08000a01   Thumb Code     4  system_stm32f10x.o(i.SetSysClock)
+    i.SetSysClockTo72                        0x08000a04   Section        0  system_stm32f10x.o(i.SetSysClockTo72)
+    SetSysClockTo72                          0x08000a05   Thumb Code   166  system_stm32f10x.o(i.SetSysClockTo72)
+    i.SystemInit                             0x08000ab4   Section        0  system_stm32f10x.o(i.SystemInit)
+    i.TIM1_UP_TIM10_IRQHandler               0x08000b04   Section        0  timers.o(i.TIM1_UP_TIM10_IRQHandler)
+    i.TIM8_UP_TIM13_IRQHandler               0x08000b20   Section        0  timers.o(i.TIM8_UP_TIM13_IRQHandler)
+    i.__0sprintf$1                           0x08000b3c   Section        0  printf1.o(i.__0sprintf$1)
+    i.__scatterload_copy                     0x08000b64   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x08000b72   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x08000b74   Section       14  handlers.o(i.__scatterload_zeroinit)
+    i._printf_core                           0x08000b84   Section        0  printf1.o(i._printf_core)
+    _printf_core                             0x08000b85   Thumb Code   336  printf1.o(i._printf_core)
+    i._sputc                                 0x08000cd8   Section        0  printf1.o(i._sputc)
+    _sputc                                   0x08000cd9   Thumb Code    10  printf1.o(i._sputc)
+    i.checkCollision                         0x08000ce2   Section        0  game.o(i.checkCollision)
+    checkCollision                           0x08000ce3   Thumb Code    38  game.o(i.checkCollision)
+    i.clearScreenGLCD                        0x08000d08   Section        0  glcd.o(i.clearScreenGLCD)
+    i.clearZone                              0x08000d18   Section        0  glcd.o(i.clearZone)
+    i.configTimer1                           0x08000d40   Section        0  timers.o(i.configTimer1)
+    i.configTimer8                           0x08000d84   Section        0  timers.o(i.configTimer8)
+    i.delay_ms                               0x08000dc8   Section        0  glcd_mcbstm32e.o(i.delay_ms)
+    delay_ms                                 0x08000dc9   Thumb Code    36  glcd_mcbstm32e.o(i.delay_ms)
+    i.displayGameLost                        0x08000df0   Section        0  menu.o(i.displayGameLost)
+    i.displayGameWon                         0x08000e24   Section        0  menu.o(i.displayGameWon)
+    i.displayLogo                            0x08000e54   Section        0  menu.o(i.displayLogo)
+    i.displayMenu                            0x08000ef0   Section        0  menu.o(i.displayMenu)
+    i.displayScores                          0x08000f64   Section        0  game.o(i.displayScores)
+    i.drawEnnemi                             0x08000fb8   Section        0  game.o(i.drawEnnemi)
+    drawEnnemi                               0x08000fb9   Thumb Code    68  game.o(i.drawEnnemi)
+    i.drawGum                                0x08001018   Section        0  game.o(i.drawGum)
+    drawGum                                  0x08001019   Thumb Code    26  game.o(i.drawGum)
+    i.drawPacMan                             0x0800103c   Section        0  game.o(i.drawPacMan)
+    drawPacMan                               0x0800103d   Thumb Code    54  game.o(i.drawPacMan)
+    i.getRandom                              0x0800108c   Section        0  random.o(i.getRandom)
+    i.getTimer3Value                         0x080010a4   Section        0  timers.o(i.getTimer3Value)
+    i.initEnnemi                             0x080010b0   Section        0  game.o(i.initEnnemi)
+    initEnnemi                               0x080010b1   Thumb Code    54  game.o(i.initEnnemi)
+    i.initGLCD                               0x080010ec   Section        0  glcd.o(i.initGLCD)
+    i.initGPIO                               0x080010fc   Section        0  gpio.o(i.initGPIO)
+    i.initGumPosition                        0x08001178   Section        0  game.o(i.initGumPosition)
+    initGumPosition                          0x08001179   Thumb Code    38  game.o(i.initGumPosition)
+    i.initRandom                             0x080011a4   Section        0  random.o(i.initRandom)
+    i.initTIMERS                             0x080011a8   Section        0  timers.o(i.initTIMERS)
+    i.initTimer3                             0x080011b8   Section        0  timers.o(i.initTimer3)
+    i.joystickDownPressed                    0x080011e8   Section        0  gpio.o(i.joystickDownPressed)
+    i.joystickLeftPressed                    0x080011f8   Section        0  gpio.o(i.joystickLeftPressed)
+    i.joystickRightPressed                   0x08001208   Section        0  gpio.o(i.joystickRightPressed)
+    i.joystickSelectPressed                  0x08001218   Section        0  gpio.o(i.joystickSelectPressed)
+    i.joystickUpPressed                      0x08001228   Section        0  gpio.o(i.joystickUpPressed)
+    i.main                                   0x08001238   Section        0  main.o(i.main)
+    i.refreshMenu                            0x08001298   Section        0  menu.o(i.refreshMenu)
+    i.setRandom                              0x080012d8   Section        0  random.o(i.setRandom)
+    i.setSpeedTimer8                         0x080012e8   Section        0  timers.o(i.setSpeedTimer8)
+    i.setupLevel                             0x0800130c   Section        0  game.o(i.setupLevel)
+    i.spawnGum                               0x08001338   Section        0  game.o(i.spawnGum)
+    i.startLevel                             0x08001358   Section        0  game.o(i.startLevel)
+    i.startTimer1                            0x0800138c   Section        0  timers.o(i.startTimer1)
+    i.startTimer8                            0x0800139c   Section        0  timers.o(i.startTimer8)
+    i.stopLevel                              0x080013ac   Section        0  game.o(i.stopLevel)
+    i.stopTimer1                             0x080013bc   Section        0  timers.o(i.stopTimer1)
+    i.stopTimer8                             0x080013cc   Section        0  timers.o(i.stopTimer8)
+    i.trackGum                               0x080013dc   Section        0  game.o(i.trackGum)
+    i.updateEnnemis                          0x08001420   Section        0  game.o(i.updateEnnemis)
+    i.updatePlayer                           0x08001594   Section        0  game.o(i.updatePlayer)
+    i.userButtonPressed                      0x08001708   Section        0  gpio.o(i.userButtonPressed)
+    i.wr_reg                                 0x08001718   Section        0  glcd_mcbstm32e.o(i.wr_reg)
+    wr_reg                                   0x08001719   Thumb Code    10  glcd_mcbstm32e.o(i.wr_reg)
+    .constdata                               0x08001722   Section      128  imagesbmp.o(.constdata)
+    .constdata                               0x080017a2   Section      128  imagesbmp.o(.constdata)
+    .constdata                               0x08001822   Section      128  imagesbmp.o(.constdata)
+    .constdata                               0x080018a2   Section      128  imagesbmp.o(.constdata)
+    .constdata                               0x08001922   Section      128  imagesbmp.o(.constdata)
+    .constdata                               0x080019a2   Section      128  imagesbmp.o(.constdata)
+    .constdata                               0x08001a22   Section      128  imagesbmp.o(.constdata)
+    .constdata                               0x08001aa2   Section      128  imagesbmp.o(.constdata)
+    .constdata                               0x08001b22   Section      128  imagesbmp.o(.constdata)
+    .constdata                               0x08001ba2   Section      128  imagesbmp.o(.constdata)
+    .constdata                               0x08001c22   Section       72  imagesbmp.o(.constdata)
+    .constdata                               0x08001c6a   Section      896  glcd_fonts.o(.constdata)
+    Font_6x8_h                               0x08001c6a   Data         896  glcd_fonts.o(.constdata)
+    .constdata                               0x08001fea   Section     5376  glcd_fonts.o(.constdata)
+    Font_16x24_h                             0x08001fea   Data        5376  glcd_fonts.o(.constdata)
+    .constdata                               0x080034ec   Section       16  glcd_fonts.o(.constdata)
+    .constdata                               0x080034fc   Section       16  glcd_fonts.o(.constdata)
+    .data                                    0x20000000   Section       16  main.o(.data)
+    .data                                    0x20000010   Section        1  menu.o(.data)
+    menuSelected                             0x20000010   Data           1  menu.o(.data)
+    .data                                    0x20000014   Section       32  game.o(.data)
+    xPacMan                                  0x20000014   Data           4  game.o(.data)
+    yPacMan                                  0x20000018   Data           4  game.o(.data)
+    dirPacMan                                0x2000001c   Data           4  game.o(.data)
+    animPacMan                               0x20000020   Data           4  game.o(.data)
+    nbEnnemis                                0x20000024   Data           4  game.o(.data)
+    animEnnemi                               0x20000028   Data           4  game.o(.data)
+    dir                                      0x2000002c   Data           8  game.o(.data)
+    .data                                    0x20000034   Section       12  glcd_mcbstm32e.o(.data)
+    Himax                                    0x20000034   Data           1  glcd_mcbstm32e.o(.data)
+    foreground_color                         0x20000036   Data           2  glcd_mcbstm32e.o(.data)
+    background_color                         0x20000038   Data           2  glcd_mcbstm32e.o(.data)
+    active_font                              0x2000003c   Data           4  glcd_mcbstm32e.o(.data)
+    .data                                    0x20000040   Section       20  system_stm32f10x.o(.data)
+    .data                                    0x20000054   Section        4  rand.o(.data)
+    _rand_state                              0x20000054   Data           4  rand.o(.data)
+    .bss                                     0x20000058   Section       92  game.o(.bss)
+    currentGum                               0x20000058   Data          20  game.o(.bss)
+    ennemis                                  0x2000006c   Data          72  game.o(.bss)
+    STACK                                    0x200000b8   Section     1024  startup_stm32f10x_xl.o(STACK)
+
+    Global Symbols
+
+    Symbol Name                              Value     Ov Type        Size  Object(Section)
+
+    BuildAttributes$$THM_ISAv4$P$D$K$B$S$PE$A:L22UL41UL21$X:L11$S22US41US21$IEEE1$IW$USESV6$~STKCKD$USESV7$~SHL$OSPACE$ROPI$EBA8$MICROLIB$REQ8$PRES8$EABIv2 0x00000000   Number         0  anon$$obj.o ABSOLUTE
+    __ARM_use_no_argv                        0x00000000   Number         0  main.o ABSOLUTE
+    _printf_a                                0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_c                                0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_charcount                        0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_d                                0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_e                                0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_f                                0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_flags                            0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_fp_dec                           0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_fp_hex                           0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_g                                0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_i                                0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_int_dec                          0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_l                                0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_lc                               0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_ll                               0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_lld                              0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_lli                              0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_llo                              0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_llu                              0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_llx                              0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_longlong_dec                     0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_longlong_hex                     0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_longlong_oct                     0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_ls                               0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_mbtowc                           0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_n                                0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_o                                0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_p                                0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_percent                          0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_pre_padding                      0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_return_value                     0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_s                                0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_sizespec                         0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_str                              0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_truncate_signed                  0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_truncate_unsigned                0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_u                                0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_wc                               0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_wctomb                           0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_widthprec                        0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_x                                0x00000000   Number         0  stubs.o ABSOLUTE
+    __cpp_initialize__aeabi_                  - Undefined Weak Reference
+    __cxa_finalize                            - Undefined Weak Reference
+    __decompress                              - Undefined Weak Reference
+    _clock_init                               - Undefined Weak Reference
+    _microlib_exit                            - Undefined Weak Reference
+    __Vectors_Size                           0x00000130   Number         0  startup_stm32f10x_xl.o ABSOLUTE
+    __Vectors                                0x08000000   Data           4  startup_stm32f10x_xl.o(RESET)
+    __Vectors_End                            0x08000130   Data           0  startup_stm32f10x_xl.o(RESET)
+    __main                                   0x08000131   Thumb Code     0  entry.o(.ARM.Collect$$$$00000000)
+    _main_stk                                0x08000131   Thumb Code     0  entry2.o(.ARM.Collect$$$$00000001)
+    _main_scatterload                        0x08000135   Thumb Code     0  entry5.o(.ARM.Collect$$$$00000004)
+    __main_after_scatterload                 0x08000139   Thumb Code     0  entry5.o(.ARM.Collect$$$$00000004)
+    _main_clock                              0x08000139   Thumb Code     0  entry7b.o(.ARM.Collect$$$$00000008)
+    _main_cpp_init                           0x08000139   Thumb Code     0  entry8b.o(.ARM.Collect$$$$0000000A)
+    _main_init                               0x08000139   Thumb Code     0  entry9a.o(.ARM.Collect$$$$0000000B)
+    __rt_final_cpp                           0x08000141   Thumb Code     0  entry10a.o(.ARM.Collect$$$$0000000D)
+    __rt_final_exit                          0x08000141   Thumb Code     0  entry11a.o(.ARM.Collect$$$$0000000F)
+    Reset_Handler                            0x08000145   Thumb Code     8  startup_stm32f10x_xl.o(.text)
+    NMI_Handler                              0x0800014d   Thumb Code     2  startup_stm32f10x_xl.o(.text)
+    HardFault_Handler                        0x0800014f   Thumb Code     2  startup_stm32f10x_xl.o(.text)
+    MemManage_Handler                        0x08000151   Thumb Code     2  startup_stm32f10x_xl.o(.text)
+    BusFault_Handler                         0x08000153   Thumb Code     2  startup_stm32f10x_xl.o(.text)
+    UsageFault_Handler                       0x08000155   Thumb Code     2  startup_stm32f10x_xl.o(.text)
+    SVC_Handler                              0x08000157   Thumb Code     2  startup_stm32f10x_xl.o(.text)
+    DebugMon_Handler                         0x08000159   Thumb Code     2  startup_stm32f10x_xl.o(.text)
+    PendSV_Handler                           0x0800015b   Thumb Code     2  startup_stm32f10x_xl.o(.text)
+    SysTick_Handler                          0x0800015d   Thumb Code     2  startup_stm32f10x_xl.o(.text)
+    ADC1_2_IRQHandler                        0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    ADC3_IRQHandler                          0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    CAN1_RX1_IRQHandler                      0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    CAN1_SCE_IRQHandler                      0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    DMA1_Channel1_IRQHandler                 0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    DMA1_Channel2_IRQHandler                 0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    DMA1_Channel3_IRQHandler                 0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    DMA1_Channel4_IRQHandler                 0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    DMA1_Channel5_IRQHandler                 0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    DMA1_Channel6_IRQHandler                 0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    DMA1_Channel7_IRQHandler                 0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    DMA2_Channel1_IRQHandler                 0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    DMA2_Channel2_IRQHandler                 0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    DMA2_Channel3_IRQHandler                 0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    DMA2_Channel4_5_IRQHandler               0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    EXTI0_IRQHandler                         0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    EXTI15_10_IRQHandler                     0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    EXTI1_IRQHandler                         0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    EXTI2_IRQHandler                         0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    EXTI3_IRQHandler                         0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    EXTI4_IRQHandler                         0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    EXTI9_5_IRQHandler                       0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    FLASH_IRQHandler                         0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    FSMC_IRQHandler                          0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    I2C1_ER_IRQHandler                       0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    I2C1_EV_IRQHandler                       0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    I2C2_ER_IRQHandler                       0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    I2C2_EV_IRQHandler                       0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    PVD_IRQHandler                           0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    RCC_IRQHandler                           0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    RTCAlarm_IRQHandler                      0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    RTC_IRQHandler                           0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    SDIO_IRQHandler                          0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    SPI1_IRQHandler                          0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    SPI2_IRQHandler                          0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    SPI3_IRQHandler                          0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    TAMPER_IRQHandler                        0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    TIM1_BRK_TIM9_IRQHandler                 0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    TIM1_CC_IRQHandler                       0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    TIM1_TRG_COM_TIM11_IRQHandler            0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    TIM2_IRQHandler                          0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    TIM3_IRQHandler                          0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    TIM4_IRQHandler                          0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    TIM5_IRQHandler                          0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    TIM6_IRQHandler                          0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    TIM7_IRQHandler                          0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    TIM8_BRK_TIM12_IRQHandler                0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    TIM8_CC_IRQHandler                       0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    TIM8_TRG_COM_TIM14_IRQHandler            0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    UART4_IRQHandler                         0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    UART5_IRQHandler                         0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    USART1_IRQHandler                        0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    USART2_IRQHandler                        0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    USART3_IRQHandler                        0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    USBWakeUp_IRQHandler                     0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    USB_HP_CAN1_TX_IRQHandler                0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    USB_LP_CAN1_RX0_IRQHandler               0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    WWDG_IRQHandler                          0x0800015f   Thumb Code     0  startup_stm32f10x_xl.o(.text)
+    rand                                     0x08000169   Thumb Code    20  rand.o(.text)
+    srand                                    0x0800017d   Thumb Code     6  rand.o(.text)
+    __aeabi_uidiv                            0x0800018d   Thumb Code     0  uidiv.o(.text)
+    __aeabi_uidivmod                         0x0800018d   Thumb Code    44  uidiv.o(.text)
+    __scatterload                            0x080001b9   Thumb Code    28  init.o(.text)
+    __scatterload_rt2                        0x080001b9   Thumb Code     0  init.o(.text)
+    GLCD_ClearScreen                         0x080001dd   Thumb Code    46  glcd_mcbstm32e.o(i.GLCD_ClearScreen)
+    GLCD_DrawBargraph                        0x08000211   Thumb Code    76  glcd_mcbstm32e.o(i.GLCD_DrawBargraph)
+    GLCD_DrawBitmap                          0x08000261   Thumb Code    58  glcd_mcbstm32e.o(i.GLCD_DrawBitmap)
+    GLCD_DrawChar                            0x0800029d   Thumb Code   120  glcd_mcbstm32e.o(i.GLCD_DrawChar)
+    GLCD_DrawString                          0x08000319   Thumb Code    42  glcd_mcbstm32e.o(i.GLCD_DrawString)
+    GLCD_Initialize                          0x08000349   Thumb Code  1524  glcd_mcbstm32e.o(i.GLCD_Initialize)
+    GLCD_SetBackgroundColor                  0x0800093d   Thumb Code     8  glcd_mcbstm32e.o(i.GLCD_SetBackgroundColor)
+    GLCD_SetFont                             0x08000949   Thumb Code     8  glcd_mcbstm32e.o(i.GLCD_SetFont)
+    GLCD_SetForegroundColor                  0x08000955   Thumb Code     8  glcd_mcbstm32e.o(i.GLCD_SetForegroundColor)
+    SystemInit                               0x08000ab5   Thumb Code    64  system_stm32f10x.o(i.SystemInit)
+    TIM1_UP_TIM10_IRQHandler                 0x08000b05   Thumb Code    24  timers.o(i.TIM1_UP_TIM10_IRQHandler)
+    TIM8_UP_TIM13_IRQHandler                 0x08000b21   Thumb Code    24  timers.o(i.TIM8_UP_TIM13_IRQHandler)
+    __0sprintf$1                             0x08000b3d   Thumb Code    34  printf1.o(i.__0sprintf$1)
+    __1sprintf$1                             0x08000b3d   Thumb Code     0  printf1.o(i.__0sprintf$1)
+    __2sprintf                               0x08000b3d   Thumb Code     0  printf1.o(i.__0sprintf$1)
+    __scatterload_copy                       0x08000b65   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x08000b73   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x08000b75   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    clearScreenGLCD                          0x08000d09   Thumb Code    16  glcd.o(i.clearScreenGLCD)
+    clearZone                                0x08000d19   Thumb Code    40  glcd.o(i.clearZone)
+    configTimer1                             0x08000d41   Thumb Code    54  timers.o(i.configTimer1)
+    configTimer8                             0x08000d85   Thumb Code    54  timers.o(i.configTimer8)
+    displayGameLost                          0x08000df1   Thumb Code    38  menu.o(i.displayGameLost)
+    displayGameWon                           0x08000e25   Thumb Code    34  menu.o(i.displayGameWon)
+    displayLogo                              0x08000e55   Thumb Code   114  menu.o(i.displayLogo)
+    displayMenu                              0x08000ef1   Thumb Code   100  menu.o(i.displayMenu)
+    displayScores                            0x08000f65   Thumb Code    54  game.o(i.displayScores)
+    getRandom                                0x0800108d   Thumb Code    24  random.o(i.getRandom)
+    getTimer3Value                           0x080010a5   Thumb Code     6  timers.o(i.getTimer3Value)
+    initGLCD                                 0x080010ed   Thumb Code    14  glcd.o(i.initGLCD)
+    initGPIO                                 0x080010fd   Thumb Code   112  gpio.o(i.initGPIO)
+    initRandom                               0x080011a5   Thumb Code     4  random.o(i.initRandom)
+    initTIMERS                               0x080011a9   Thumb Code    14  timers.o(i.initTIMERS)
+    initTimer3                               0x080011b9   Thumb Code    38  timers.o(i.initTimer3)
+    joystickDownPressed                      0x080011e9   Thumb Code    12  gpio.o(i.joystickDownPressed)
+    joystickLeftPressed                      0x080011f9   Thumb Code    12  gpio.o(i.joystickLeftPressed)
+    joystickRightPressed                     0x08001209   Thumb Code    12  gpio.o(i.joystickRightPressed)
+    joystickSelectPressed                    0x08001219   Thumb Code    12  gpio.o(i.joystickSelectPressed)
+    joystickUpPressed                        0x08001229   Thumb Code    12  gpio.o(i.joystickUpPressed)
+    main                                     0x08001239   Thumb Code    92  main.o(i.main)
+    refreshMenu                              0x08001299   Thumb Code    60  menu.o(i.refreshMenu)
+    setRandom                                0x080012d9   Thumb Code    14  random.o(i.setRandom)
+    setSpeedTimer8                           0x080012e9   Thumb Code    32  timers.o(i.setSpeedTimer8)
+    setupLevel                               0x0800130d   Thumb Code    38  game.o(i.setupLevel)
+    spawnGum                                 0x08001339   Thumb Code    26  game.o(i.spawnGum)
+    startLevel                               0x08001359   Thumb Code    44  game.o(i.startLevel)
+    startTimer1                              0x0800138d   Thumb Code    12  timers.o(i.startTimer1)
+    startTimer8                              0x0800139d   Thumb Code    12  timers.o(i.startTimer8)
+    stopLevel                                0x080013ad   Thumb Code    14  game.o(i.stopLevel)
+    stopTimer1                               0x080013bd   Thumb Code    12  timers.o(i.stopTimer1)
+    stopTimer8                               0x080013cd   Thumb Code    12  timers.o(i.stopTimer8)
+    trackGum                                 0x080013dd   Thumb Code    64  game.o(i.trackGum)
+    updateEnnemis                            0x08001421   Thumb Code   352  game.o(i.updateEnnemis)
+    updatePlayer                             0x08001595   Thumb Code   346  game.o(i.updatePlayer)
+    userButtonPressed                        0x08001709   Thumb Code    12  gpio.o(i.userButtonPressed)
+    bmpPacManClose                           0x08001722   Data         128  imagesbmp.o(.constdata)
+    bmpPacManOpenRight                       0x080017a2   Data         128  imagesbmp.o(.constdata)
+    bmpPacManOpenLeft                        0x08001822   Data         128  imagesbmp.o(.constdata)
+    bmpPacManOpenDown                        0x080018a2   Data         128  imagesbmp.o(.constdata)
+    bmpPacManOpenUp                          0x08001922   Data         128  imagesbmp.o(.constdata)
+    bmpEnnemiClose                           0x080019a2   Data         128  imagesbmp.o(.constdata)
+    bmpEnnemiOpenRight                       0x08001a22   Data         128  imagesbmp.o(.constdata)
+    bmpEnnemiOpenLeft                        0x08001aa2   Data         128  imagesbmp.o(.constdata)
+    bmpEnnemiOpenDown                        0x08001b22   Data         128  imagesbmp.o(.constdata)
+    bmpEnnemiOpenUp                          0x08001ba2   Data         128  imagesbmp.o(.constdata)
+    bmpFood                                  0x08001c22   Data          72  imagesbmp.o(.constdata)
+    GLCD_Font_6x8                            0x080034ec   Data          16  glcd_fonts.o(.constdata)
+    GLCD_Font_16x24                          0x080034fc   Data          16  glcd_fonts.o(.constdata)
+    Region$$Table$$Base                      0x0800350c   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x0800352c   Number         0  anon$$obj.o(Region$$Table)
+    gameLost                                 0x20000000   Data           4  main.o(.data)
+    gameWon                                  0x20000004   Data           4  main.o(.data)
+    score                                    0x20000008   Data           4  main.o(.data)
+    enemiScore                               0x2000000c   Data           4  main.o(.data)
+    SystemCoreClock                          0x20000040   Data           4  system_stm32f10x.o(.data)
+    AHBPrescTable                            0x20000044   Data          16  system_stm32f10x.o(.data)
+    __initial_sp                             0x200004b8   Data           0  startup_stm32f10x_xl.o(STACK)
+
+
+
+==============================================================================
+
+Memory Map of the image
+
+  Image Entry point : 0x08000145
+
+  Load Region LR_1 (Base: 0x08000000, Size: 0x00003584, Max: 0xffffffff, ABSOLUTE)
+
+    Execution Region ER_RO (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x0000352c, Max: 0xffffffff, ABSOLUTE)
+
+    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x08000000   0x08000000   0x00000130   Data   RO         1099    RESET               startup_stm32f10x_xl.o
+    0x08000130   0x08000130   0x00000000   Code   RO         1150  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
+    0x08000130   0x08000130   0x00000004   Code   RO         1417    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
+    0x08000134   0x08000134   0x00000004   Code   RO         1420    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
+    0x08000138   0x08000138   0x00000000   Code   RO         1422    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
+    0x08000138   0x08000138   0x00000000   Code   RO         1424    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
+    0x08000138   0x08000138   0x00000008   Code   RO         1425    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
+    0x08000140   0x08000140   0x00000000   Code   RO         1427    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
+    0x08000140   0x08000140   0x00000000   Code   RO         1429    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
+    0x08000140   0x08000140   0x00000004   Code   RO         1418    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
+    0x08000144   0x08000144   0x00000024   Code   RO         1100  * .text               startup_stm32f10x_xl.o
+    0x08000168   0x08000168   0x00000024   Code   RO         1153    .text               mc_w.l(rand.o)
+    0x0800018c   0x0800018c   0x0000002c   Code   RO         1434    .text               mc_w.l(uidiv.o)
+    0x080001b8   0x080001b8   0x00000024   Code   RO         1449    .text               mc_w.l(init.o)
+    0x080001dc   0x080001dc   0x00000034   Code   RO          555    i.GLCD_ClearScreen  glcd_mcbstm32e.o
+    0x08000210   0x08000210   0x00000050   Code   RO          556    i.GLCD_DrawBargraph  glcd_mcbstm32e.o
+    0x08000260   0x08000260   0x0000003a   Code   RO          557    i.GLCD_DrawBitmap   glcd_mcbstm32e.o
+    0x0800029a   0x0800029a   0x00000002   PAD
+    0x0800029c   0x0800029c   0x0000007c   Code   RO          558    i.GLCD_DrawChar     glcd_mcbstm32e.o
+    0x08000318   0x08000318   0x00000030   Code   RO          562    i.GLCD_DrawString   glcd_mcbstm32e.o
+    0x08000348   0x08000348   0x000005f4   Code   RO          566    i.GLCD_Initialize   glcd_mcbstm32e.o
+    0x0800093c   0x0800093c   0x0000000c   Code   RO          568    i.GLCD_SetBackgroundColor  glcd_mcbstm32e.o
+    0x08000948   0x08000948   0x0000000c   Code   RO          569    i.GLCD_SetFont      glcd_mcbstm32e.o
+    0x08000954   0x08000954   0x0000000c   Code   RO          570    i.GLCD_SetForegroundColor  glcd_mcbstm32e.o
+    0x08000960   0x08000960   0x000000a0   Code   RO          571    i.GLCD_SetWindow    glcd_mcbstm32e.o
+    0x08000a00   0x08000a00   0x00000004   Code   RO         1107    i.SetSysClock       system_stm32f10x.o
+    0x08000a04   0x08000a04   0x000000b0   Code   RO         1108    i.SetSysClockTo72   system_stm32f10x.o
+    0x08000ab4   0x08000ab4   0x00000050   Code   RO         1110    i.SystemInit        system_stm32f10x.o
+    0x08000b04   0x08000b04   0x0000001c   Code   RO          399    i.TIM1_UP_TIM10_IRQHandler  timers.o
+    0x08000b20   0x08000b20   0x0000001c   Code   RO          400    i.TIM8_UP_TIM13_IRQHandler  timers.o
+    0x08000b3c   0x08000b3c   0x00000028   Code   RO         1203    i.__0sprintf$1      mc_w.l(printf1.o)
+    0x08000b64   0x08000b64   0x0000000e   Code   RO         1463    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x08000b72   0x08000b72   0x00000002   Code   RO         1464    i.__scatterload_null  mc_w.l(handlers.o)
+    0x08000b74   0x08000b74   0x0000000e   Code   RO         1465    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x08000b82   0x08000b82   0x00000002   PAD
+    0x08000b84   0x08000b84   0x00000154   Code   RO         1208    i._printf_core      mc_w.l(printf1.o)
+    0x08000cd8   0x08000cd8   0x0000000a   Code   RO         1210    i._sputc            mc_w.l(printf1.o)
+    0x08000ce2   0x08000ce2   0x00000026   Code   RO          163    i.checkCollision    game.o
+    0x08000d08   0x08000d08   0x00000010   Code   RO          489    i.clearScreenGLCD   glcd.o
+    0x08000d18   0x08000d18   0x00000028   Code   RO          490    i.clearZone         glcd.o
+    0x08000d40   0x08000d40   0x00000044   Code   RO          401    i.configTimer1      timers.o
+    0x08000d84   0x08000d84   0x00000044   Code   RO          402    i.configTimer8      timers.o
+    0x08000dc8   0x08000dc8   0x00000028   Code   RO          574    i.delay_ms          glcd_mcbstm32e.o
+    0x08000df0   0x08000df0   0x00000034   Code   RO           96    i.displayGameLost   menu.o
+    0x08000e24   0x08000e24   0x00000030   Code   RO           97    i.displayGameWon    menu.o
+    0x08000e54   0x08000e54   0x0000009c   Code   RO           98    i.displayLogo       menu.o
+    0x08000ef0   0x08000ef0   0x00000074   Code   RO           99    i.displayMenu       menu.o
+    0x08000f64   0x08000f64   0x00000054   Code   RO          165    i.displayScores     game.o
+    0x08000fb8   0x08000fb8   0x00000060   Code   RO          166    i.drawEnnemi        game.o
+    0x08001018   0x08001018   0x00000024   Code   RO          167    i.drawGum           game.o
+    0x0800103c   0x0800103c   0x00000050   Code   RO          168    i.drawPacMan        game.o
+    0x0800108c   0x0800108c   0x00000018   Code   RO          288    i.getRandom         random.o
+    0x080010a4   0x080010a4   0x0000000c   Code   RO          403    i.getTimer3Value    timers.o
+    0x080010b0   0x080010b0   0x0000003c   Code   RO          169    i.initEnnemi        game.o
+    0x080010ec   0x080010ec   0x0000000e   Code   RO          491    i.initGLCD          glcd.o
+    0x080010fa   0x080010fa   0x00000002   PAD
+    0x080010fc   0x080010fc   0x0000007c   Code   RO          324    i.initGPIO          gpio.o
+    0x08001178   0x08001178   0x0000002c   Code   RO          170    i.initGumPosition   game.o
+    0x080011a4   0x080011a4   0x00000004   Code   RO          289    i.initRandom        random.o
+    0x080011a8   0x080011a8   0x0000000e   Code   RO          404    i.initTIMERS        timers.o
+    0x080011b6   0x080011b6   0x00000002   PAD
+    0x080011b8   0x080011b8   0x00000030   Code   RO          405    i.initTimer3        timers.o
+    0x080011e8   0x080011e8   0x00000010   Code   RO          325    i.joystickDownPressed  gpio.o
+    0x080011f8   0x080011f8   0x00000010   Code   RO          326    i.joystickLeftPressed  gpio.o
+    0x08001208   0x08001208   0x00000010   Code   RO          327    i.joystickRightPressed  gpio.o
+    0x08001218   0x08001218   0x00000010   Code   RO          328    i.joystickSelectPressed  gpio.o
+    0x08001228   0x08001228   0x00000010   Code   RO          329    i.joystickUpPressed  gpio.o
+    0x08001238   0x08001238   0x00000060   Code   RO            4    i.main              main.o
+    0x08001298   0x08001298   0x00000040   Code   RO          100    i.refreshMenu       menu.o
+    0x080012d8   0x080012d8   0x0000000e   Code   RO          290    i.setRandom         random.o
+    0x080012e6   0x080012e6   0x00000002   PAD
+    0x080012e8   0x080012e8   0x00000024   Code   RO          406    i.setSpeedTimer8    timers.o
+    0x0800130c   0x0800130c   0x0000002c   Code   RO          171    i.setupLevel        game.o
+    0x08001338   0x08001338   0x00000020   Code   RO          172    i.spawnGum          game.o
+    0x08001358   0x08001358   0x00000034   Code   RO          173    i.startLevel        game.o
+    0x0800138c   0x0800138c   0x00000010   Code   RO          407    i.startTimer1       timers.o
+    0x0800139c   0x0800139c   0x00000010   Code   RO          408    i.startTimer8       timers.o
+    0x080013ac   0x080013ac   0x0000000e   Code   RO          174    i.stopLevel         game.o
+    0x080013ba   0x080013ba   0x00000002   PAD
+    0x080013bc   0x080013bc   0x00000010   Code   RO          409    i.stopTimer1        timers.o
+    0x080013cc   0x080013cc   0x00000010   Code   RO          410    i.stopTimer8        timers.o
+    0x080013dc   0x080013dc   0x00000044   Code   RO          175    i.trackGum          game.o
+    0x08001420   0x08001420   0x00000174   Code   RO          176    i.updateEnnemis     game.o
+    0x08001594   0x08001594   0x00000174   Code   RO          177    i.updatePlayer      game.o
+    0x08001708   0x08001708   0x00000010   Code   RO          332    i.userButtonPressed  gpio.o
+    0x08001718   0x08001718   0x0000000a   Code   RO          575    i.wr_reg            glcd_mcbstm32e.o
+    0x08001722   0x08001722   0x00000080   Data   RO          265    .constdata          imagesbmp.o
+    0x080017a2   0x080017a2   0x00000080   Data   RO          266    .constdata          imagesbmp.o
+    0x08001822   0x08001822   0x00000080   Data   RO          267    .constdata          imagesbmp.o
+    0x080018a2   0x080018a2   0x00000080   Data   RO          268    .constdata          imagesbmp.o
+    0x08001922   0x08001922   0x00000080   Data   RO          269    .constdata          imagesbmp.o
+    0x080019a2   0x080019a2   0x00000080   Data   RO          270    .constdata          imagesbmp.o
+    0x08001a22   0x08001a22   0x00000080   Data   RO          271    .constdata          imagesbmp.o
+    0x08001aa2   0x08001aa2   0x00000080   Data   RO          272    .constdata          imagesbmp.o
+    0x08001b22   0x08001b22   0x00000080   Data   RO          273    .constdata          imagesbmp.o
+    0x08001ba2   0x08001ba2   0x00000080   Data   RO          274    .constdata          imagesbmp.o
+    0x08001c22   0x08001c22   0x00000048   Data   RO          275    .constdata          imagesbmp.o
+    0x08001c6a   0x08001c6a   0x00000380   Data   RO          537    .constdata          glcd_fonts.o
+    0x08001fea   0x08001fea   0x00001500   Data   RO          538    .constdata          glcd_fonts.o
+    0x080034ea   0x080034ea   0x00000002   PAD
+    0x080034ec   0x080034ec   0x00000010   Data   RO          539    .constdata          glcd_fonts.o
+    0x080034fc   0x080034fc   0x00000010   Data   RO          540    .constdata          glcd_fonts.o
+    0x0800350c   0x0800350c   0x00000020   Data   RO         1461    Region$$Table       anon$$obj.o
+
+
+    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x0800352c, Size: 0x00000058, Max: 0xffffffff, ABSOLUTE)
+
+    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x20000000   0x0800352c   0x00000010   Data   RW            5    .data               main.o
+    0x20000010   0x0800353c   0x00000001   Data   RW          101    .data               menu.o
+    0x20000011   0x0800353d   0x00000003   PAD
+    0x20000014   0x08003540   0x00000020   Data   RW          179    .data               game.o
+    0x20000034   0x08003560   0x0000000c   Data   RW          576    .data               glcd_mcbstm32e.o
+    0x20000040   0x0800356c   0x00000014   Data   RW         1111    .data               system_stm32f10x.o
+    0x20000054   0x08003580   0x00000004   Data   RW         1154    .data               mc_w.l(rand.o)
+
+
+    Execution Region ER_ZI (Exec base: 0x20000058, Load base: 0x08003584, Size: 0x00000460, Max: 0xffffffff, ABSOLUTE)
+
+    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x20000058        -       0x0000005c   Zero   RW          178    .bss                game.o
+    0x200000b4   0x08003584   0x00000004   PAD
+    0x200000b8        -       0x00000400   Zero   RW         1097    STACK               startup_stm32f10x_xl.o
+
+
+==============================================================================
+
+Image component sizes
+
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
+
+      1392        176          0         32         92       9383   game.o
+        70          0          0          0          0       1577   glcd.o
+         0          0       6304          0          0       1104   glcd_fonts.o
+      2132         84          0         12          0      10412   glcd_mcbstm32e.o
+       220         36          0          0          0       3502   gpio.o
+         0          0       1352          0          0       1226   imagesbmp.o
+        96          4          0         16          0       6671   main.o
+       436         90          0          1          0       2745   menu.o
+        42          0          0          0          0       1457   random.o
+        36          8        304          0       1024        836   startup_stm32f10x_xl.o
+       260         26          0         20          0       2381   system_stm32f10x.o
+       366         72          0          0          0       5714   timers.o
+
+    ----------------------------------------------------------------------
+      5060        496       7994         84       1120      47008   Object Totals
+         0          0         32          0          0          0   (incl. Generated)
+        10          0          2          3          4          0   (incl. Padding)
+
+    ----------------------------------------------------------------------
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Library Member Name
+
+         0          0          0          0          0          0   entry.o
+         0          0          0          0          0          0   entry10a.o
+         0          0          0          0          0          0   entry11a.o
+         8          4          0          0          0          0   entry2.o
+         4          0          0          0          0          0   entry5.o
+         0          0          0          0          0          0   entry7b.o
+         0          0          0          0          0          0   entry8b.o
+         8          4          0          0          0          0   entry9a.o
+        30          0          0          0          0          0   handlers.o
+        36          8          0          0          0         68   init.o
+       390         10          0          0          0        252   printf1.o
+        36         10          0          4          0        136   rand.o
+        44          0          0          0          0         80   uidiv.o
+
+    ----------------------------------------------------------------------
+       558         36          0          4          0        536   Library Totals
+         2          0          0          0          0          0   (incl. Padding)
+
+    ----------------------------------------------------------------------
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Library Name
+
+       556         36          0          4          0        536   mc_w.l
+
+    ----------------------------------------------------------------------
+       558         36          0          4          0        536   Library Totals
+
+    ----------------------------------------------------------------------
+
+==============================================================================
+
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
+
+      5618        532       7994         88       1120      44628   Grand Totals
+      5618        532       7994         88       1120      44628   ELF Image Totals
+      5618        532       7994         88          0          0   ROM Totals
+
+==============================================================================
+
+    Total RO  Size (Code + RO Data)                13612 (  13.29kB)
+    Total RW  Size (RW Data + ZI Data)              1208 (   1.18kB)
+    Total ROM Size (Code + RO Data + RW Data)      13700 (  13.38kB)
+
+==============================================================================
+
