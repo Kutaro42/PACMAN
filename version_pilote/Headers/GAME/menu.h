@@ -1,7 +1,7 @@
 /**
   ******************************************************************************************************************
   * @file    menu.h
-  * @author  IUT Informatique La Rochelle
+  * @author  IUT Informatique La Rochelle (édité par Alexandre AUBIN/Leo BOUCARD)
   * @version v1.5
   * @date    2026
   * @brief   Déclarations des fonctions d'affichage du menu et des écrans de fin.

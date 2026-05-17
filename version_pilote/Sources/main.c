@@ -1,6 +1,6 @@
 /**
  * @file    main.c
- * @author  Alexandre AUBIN (IUT Informatique La Rochelle)
+ * @author  Alexandre AUBIN/leo BOUCARD (IUT Informatique La Rochelle)
  * @version v1.5
  * @date    2026
  * @brief   Point d'entree du jeu PUCK-MAN.

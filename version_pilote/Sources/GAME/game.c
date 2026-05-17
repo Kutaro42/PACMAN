@@ -1,7 +1,7 @@
 /**
   ******************************************************************************************************************
   * @file    game.c
-  * @author  Alexandre AUBIN (IUT Informatique La Rochelle)
+  * @author  Alexandre AUBIN/Leo BOUCARD (IUT Informatique La Rochelle)
   * @version v1.5
   * @date    2026
   * @brief   Logique principale du jeu PUCK-MAN.
@@ -381,54 +381,68 @@ Position *trackGum(Position begin, Position end)
  *     Si score >= 3 → gameWon = 1.
  */
 void updatePlayer(void)
+
 {
     int i;
-    int moved = 0;
 
     /* ------------------------------------------------------------------ */
-    /* 1. Mouvement                                                        */
+    /* 1. Mise a jour de la direction si le joueur appuie sur le joystick  */
+    /*    Le deplacement lui-meme est toujours automatique (voir etape 2)  */
     /* ------------------------------------------------------------------ */
 
-    if (joystickLeftPressed() && xPacMan > 0)
+    if      (joystickLeftPressed())  dirPacMan = DIR_LEFT;
+    else if (joystickRightPressed()) dirPacMan = DIR_RIGHT;
+    else if (joystickUpPressed())    dirPacMan = DIR_UP;
+    else if (joystickDownPressed())  dirPacMan = DIR_DOWN;
+    /* Si aucun joystick : dirPacMan conserve sa derniere valeur           */
+    /* → Pac-Man continue dans la meme direction                           */
+
+    /* ------------------------------------------------------------------ */
+    /* 2. Deplacement automatique dans la direction courante               */
+    /*    Bloque aux bords de l'ecran (Pac-Man s'arrete au mur)           */
+    /* ------------------------------------------------------------------ */
+
+    switch (dirPacMan)
     {
-        /* Effacer la colonne de droite avant de glisser a gauche */
-        clearZone(xPacMan + WIDTH_PACMAN - 1, yPacMan, 1, HEIGHT_PACMAN);
-        xPacMan--;
-        dirPacMan = DIR_LEFT;
-        moved = 1;
-    }
-    else if (joystickRightPressed() && xPacMan + WIDTH_PACMAN < SCREEN_W)
-    {
-        /* Effacer la colonne de gauche avant de glisser a droite */
-        clearZone(xPacMan, yPacMan, 1, HEIGHT_PACMAN);
-        xPacMan++;
-        dirPacMan = DIR_RIGHT;
-        moved = 1;
-    }
-    else if (joystickUpPressed() && yPacMan > HUD_HEIGHT)
-    {
-        /* Effacer la ligne du bas avant de monter */
-        clearZone(xPacMan, yPacMan + HEIGHT_PACMAN - 1, WIDTH_PACMAN, 1);
-        yPacMan--;
-        dirPacMan = DIR_UP;
-        moved = 1;
-    }
-    else if (joystickDownPressed() && yPacMan + HEIGHT_PACMAN < SCREEN_H)
-    {
-        /* Effacer la ligne du haut avant de descendre */
-        clearZone(xPacMan, yPacMan, WIDTH_PACMAN, 1);
-        yPacMan++;
-        dirPacMan = DIR_DOWN;
-        moved = 1;
+        case DIR_LEFT:
+            if (xPacMan > 0)
+            {
+                clearZone(xPacMan + WIDTH_PACMAN - 1, yPacMan, 1, HEIGHT_PACMAN);
+                xPacMan--;
+            }
+            break;
+
+        case DIR_RIGHT:
+            if (xPacMan + WIDTH_PACMAN < SCREEN_W)
+            {
+                clearZone(xPacMan, yPacMan, 1, HEIGHT_PACMAN);
+                xPacMan++;
+            }
+            break;
+
+        case DIR_UP:
+            if (yPacMan > HUD_HEIGHT)
+            {
+                clearZone(xPacMan, yPacMan + HEIGHT_PACMAN - 1, WIDTH_PACMAN, 1);
+                yPacMan--;
+            }
+            break;
+
+        case DIR_DOWN:
+            if (yPacMan + HEIGHT_PACMAN < SCREEN_H)
+            {
+                clearZone(xPacMan, yPacMan, WIDTH_PACMAN, 1);
+                yPacMan++;
+            }
+            break;
     }
 
-    /* Alterner la frame d'animation a chaque deplacement */
-    if (moved) animPacMan ^= 1;
-
+    /* Animation : alterne ouvert/ferme a chaque tick */
+    animPacMan ^= 1;
     drawPacMan();
 
     /* ------------------------------------------------------------------ */
-    /* 2. Collision joueur ↔ ennemi → DEFAITE                             */
+    /* 3. Collision joueur <-> ennemi                                      */
     /* ------------------------------------------------------------------ */
 
     for (i = 0; i < nbEnnemis; i++)
@@ -439,12 +453,12 @@ void updatePlayer(void)
                            ennemis[i].width, ennemis[i].height))
         {
             gameLost = 1;
-            return; /* Sortie immediate : la partie est terminee */
+            return;
         }
     }
 
     /* ------------------------------------------------------------------ */
-    /* 3. Collision joueur ↔ gomme → POINT JOUEUR                         */
+    /* 4. Collision joueur <-> gomme                                       */
     /* ------------------------------------------------------------------ */
 
     if (!currentGum.claimed &&
@@ -452,18 +466,16 @@ void updatePlayer(void)
                        currentGum.itsPosition.x, currentGum.itsPosition.y,
                        currentGum.width, currentGum.height))
     {
-        currentGum.claimed = true; /* Marquer avant spawnGum pour eviter double-collecte */
+        currentGum.claimed = true;
         score++;
         displayScores(score, enemiScore);
 
-        /* Victoire ? */
         if (score >= 3)
         {
             gameWon = 1;
             return;
         }
 
-        /* Faire apparaitre un ennemi supplementaire (max MAX_ENNEMIS) */
         if (nbEnnemis < MAX_ENNEMIS)
         {
             initEnnemi(nbEnnemis);
@@ -471,7 +483,6 @@ void updatePlayer(void)
             nbEnnemis++;
         }
 
-        /* Nouvelle pac-gomme */
         spawnGum();
     }
 }

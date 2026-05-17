@@ -1,10 +1,10 @@
 /**
   ******************************************************************************************************************
   * @file    menu.c
-  * @author  IUT Informatique La Rochelle
+  * @author  IUT Informatique La Rochelle (édité par Alexandre AUBIN/Leo BOUCARD)
   * @version v1.5
   * @date    2026
-  * @modification	
+  * @modification	messages coloré pour la victoire/défaite
   * @brief   Gestion du menu
   ******************************************************************************************************************/
 
@@ -85,7 +85,7 @@ void displayGameLost(void)
     clearScreenGLCD();
     displayLogo();
 
-    GLCD_SetForegroundColor(GLCD_COLOR_YELLOW);
+    GLCD_SetForegroundColor(GLCD_COLOR_RED);
     GLCD_DrawString(100, 100, "Perdu !!!");
 
     while (!userButtonPressed()); /* Attente confirmation joueur */
@@ -94,14 +94,14 @@ void displayGameLost(void)
 /**
  * @brief Affiche l'ecran de victoire.
  *
- * Affiche le logo et le texte "GAGNE !!!" en rouge,
+ * Affiche le logo et le texte "GAGNE !!!" en vert,
  * puis attend une pression sur le bouton USER pour continuer.
  */
 void displayGameWon(void)
 {
     displayLogo();
 
-    GLCD_SetForegroundColor(GLCD_COLOR_YELLOW);
+    GLCD_SetForegroundColor(GLCD_COLOR_GREEN);
     GLCD_DrawString(100, 100, "GAGNE !!!");
 
     while (!userButtonPressed()); /* Attente confirmation joueur */
@@ -118,7 +118,7 @@ void displayLogo(void)
     GLCD_SetBackgroundColor(GLCD_COLOR_BLACK);
     GLCD_SetForegroundColor(GLCD_COLOR_YELLOW);
     GLCD_SetFont(&GLCD_Font_16x24);
-    GLCD_DrawString(3, 0, "      PUCK-MAN");
+    GLCD_DrawString(3, 0, "      PAC-MAN");
 
     /*GLCD_DrawBitmap(100, 40, WIDTH_ENNEMI1,  HEIGHT_ENNEMI1,  (unsigned char *)bmpEnnemi1);
     GLCD_DrawBitmap(145, 40, WIDTH_ENNEMI2,  HEIGHT_ENNEMI2,  (unsigned char *)bmpEnnemi2Red);

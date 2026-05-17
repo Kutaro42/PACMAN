@@ -1,7 +1,7 @@
 /**
   ******************************************************************************************************************
   * @file    game.h
-  * @author  Alexandre AUBIN IUT Informatique La Rochelle
+  * @author  Alexandre AUBIN/Leo BOUCARD (IUT Informatique La Rochelle)
   * @version v1.5
   * @date    2026
   * @brief   Declarations des types, structures et fonctions de gestion du jeu.

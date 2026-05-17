@@ -1,7 +1,7 @@
 /**
   ******************************************************************************************************************
   * @file    TIMERS.c 
-  * @author  IUT Informatique La Rochelle (édité par Alexandre AUBIN)
+  * @author  IUT Informatique La Rochelle (édité par Alexandre AUBIN/ Leo BOUCARD)
   * @version v1.5
   * @date    2026
   * @modification	Utilisation des timers de space defender, le joueur estdésigné par updatePlayer.
@@ -37,9 +37,20 @@ void initTIMERS(void)
  */
 void configTimer1(void)
 {
+	   /*
+		 *  PSC=3,  ARR=64800  ? ~3.6 ms  (très rapide)
+     *  PSC=7,  ARR=64800  ? ~7.2 ms  (rapide)
+     *  PSC=15, ARR=64800  ? ~14.4 ms (normal, valeur actuelle)
+     *  PSC=31, ARR=64800  ? ~28.9 ms (lent)
+     *  PSC=71, ARR=64800  ? ~65.6 ms (très lent)
+     *
+     * Exemple pour un Pac-Man "normal" :
+     *   TIM1->PSC = 15;
+     *   TIM1->ARR = 64800;
+	  */
     RCC->APB2ENR |= (1 << 11);  /* TIM1EN : activation de l'horloge TIM1    */
-    TIM1->PSC  = 3;             /* Prescaler : divise par 4                  */
-    TIM1->ARR  = 64800;         /* Periode   : 64801 cycles * 4 / 72 MHz ~= 3.6 ms */
+    TIM1->PSC  = 15;             /* Prescaler : divise par 16                  */
+    TIM1->ARR  = 64800;         /* Periode   : 64801 cycles * (15+1) / 72 MHz ~= 14.4 ms */
     TIM1->DIER |= UIE;          /* Autorisation de l'interruption Update     */
     stopTimer1();               /* S'assurer que le timer est arrete a l'init */
     SETENA0 |= (1 << 25);       /* Active l'IRQ TIM1_UP dans le NVIC         */
@@ -58,10 +69,10 @@ void stopTimer1(void)
 }
 
 /**
- * @brief ISR TIM1 Update : met a jour la position du vaisseau.
+ * @brief ISR TIM1 Update : met a jour la position du joueur.
  *
  * Appelee toutes les ~3.6 ms. On teste UIF pour ignorer les
- * interruptions parasites et on le remet a 0 apres traitement.
+ * interruptions parasites et on le remet à 0 après traitement.
  */
 void TIM1_UP_TIM10_IRQHandler(void)
 {
@@ -76,9 +87,9 @@ void TIM1_UP_TIM10_IRQHandler(void)
  * Timer 8 : deplacement des ennemis (vitesse variable)
  * Horloge APB2 = 72 MHz, ARR = 36000
  * Periode = (PSC+1) * 36001 / 72e6
- *   NORMAL     : PSC=31 => ~16 ms
- *   SPEED      : PSC=25 => ~13 ms
- *   HARDCORE   : PSC=19 => ~10 ms
+ *   NORMAL     : PSC=60 => ~ 30ms
+ *   SPEED      : PSC=31 => ~16 ms
+ *   HARDCORE   : PSC=25 => ~ 13ms
  *   IMPOSSIBLE : PSC=13 => ~7 ms
  * ======================================================================== */
 
@@ -103,9 +114,9 @@ void configTimer8(void)
  */
 void setSpeedTimer8(Speed speed)
 {
-    if      (speed == NORMAL)     TIM8->PSC = 31;  /* ~16 ms */
-    else if (speed == SPEED)      TIM8->PSC = 25;  /* ~13 ms */
-    else if (speed == HARDCORE)   TIM8->PSC = 19;  /* ~10 ms */
+    if      (speed == NORMAL)     TIM8->PSC = 60;  /* ~ 30ms */
+    else if (speed == SPEED)      TIM8->PSC = 31;  /* ~ 16ms */
+    else if (speed == HARDCORE)   TIM8->PSC = 25;  /* ~ 13ms */
 }
 
 /** @brief Demarre TIM8 (CEN=1). */
@@ -123,7 +134,7 @@ void stopTimer8(void)
 /**
  * @brief ISR TIM8 Update : met a jour la position de tous les ennemis.
  *
- * Appelee a la cadence du Timer 8 (de ~7 a ~16 ms selon le niveau).
+ * Appelee à la cadence du Timer 8 (de ~7 a ~16 ms selon le niveau).
  * On acquitte UIF apres traitement.
  */
 void TIM8_UP_TIM13_IRQHandler(void)
