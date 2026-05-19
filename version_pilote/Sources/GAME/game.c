@@ -438,7 +438,10 @@ void updatePlayer(void)
     }
 
     /* Animation : alterne ouvert/ferme a chaque tick */
-    animPacMan ^= 1;
+		if (TIM1->CNT % 4 == 0)
+		{
+			animPacMan ^= 1;
+		}
     drawPacMan();
 
     /* ------------------------------------------------------------------ */
